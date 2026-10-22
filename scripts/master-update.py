@@ -12,7 +12,9 @@ import urllib.error
 
 BASE = "https://deserver.neexthub.site/lifeos/backendserver"
 ROOT = Path(__file__).resolve().parents[1] / "backendserver"
-FILES = ["src/Migrations.php", "src/bootstrap.php", "src/Auth.php", "src/Api/routes_master.php", "src/Api/routes_member.php", "src/Engine/Wallet.php", "src/Engine/Commission.php", "src/Engine/Placement.php", "src/Engine/Plan.php", "src/Engine/Rank.php", "src/Api/routes_admin.php", "database/004_admin_panel.sql", "database/005_team_join.sql", "config.example.php", "README.md", ".htaccess"]
+FILES = ["src/Migrations.php", "src/bootstrap.php", "src/Auth.php", "src/Api/routes_master.php", "src/Api/routes_member.php", "src/Engine/Wallet.php", "src/Engine/Commission.php", "src/Engine/Placement.php", "src/Engine/Plan.php", "src/Engine/Rank.php", "src/Api/routes_admin.php", "config.example.php", "README.md", ".htaccess"]
+# Ship every migration, including financial audit structures; never enumerate a partial schema.
+FILES += [str(path.relative_to(ROOT)) for path in sorted((ROOT / "database").glob("*.sql"))]
 
 
 def request(method, path, payload=None):
@@ -42,12 +44,18 @@ def request(method, path, payload=None):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true")
+    parser.add_argument("--files", nargs="+", help="Deploy only these reviewed files instead of the full setup package")
     args = parser.parse_args()
     request("GET", "/api/master/ping")
     print("Signed server connectivity verified")
     if args.check:
         return
-    files = [{"path": path, "content": base64.b64encode((ROOT / path).read_bytes()).decode()} for path in FILES]
+    selected = args.files or FILES
+    for path in selected:
+        full = (ROOT / path).resolve()
+        if not full.is_relative_to(ROOT.resolve()) or not full.is_file() or full.name == "config.php":
+            raise RuntimeError("Invalid deployment file")
+    files = [{"path": path, "content": base64.b64encode((ROOT / path).read_bytes()).decode()} for path in selected]
     deployed = request("POST", "/api/master/deploy", {"files": files})
     print("Setup update deployed; backup:", deployed.get("deploy_id", "unavailable"))
     request("POST", "/api/master/db/migrate", {})
