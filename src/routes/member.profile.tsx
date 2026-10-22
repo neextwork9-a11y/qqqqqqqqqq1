@@ -46,7 +46,8 @@ function Profile() {
     e.preventDefault();
     setBusy(true);
     try {
-      await memberApi("/profile", { body: photo ? { ...f, photo_base64: photo } : f });
+      const { photo_base64: storedPhoto, ...fields } = f;
+      await memberApi("/profile", { body: photo ? { ...fields, photo_base64: photo } : fields });
       setMsg({ ok: true, t: "Profile updated successfully." });
       await q.refetch();
       setPhoto(null);
@@ -61,7 +62,7 @@ function Profile() {
       <td><input style={inp} type="text" placeholder={k === "dob" ? "YYYY-MM-DD" : undefined} value={f[k] ?? ""} onChange={(e) => setF({ ...f, [k]: e.target.value })} /></td>
     </tr>
   );
-  const img = photo || f["photo_base64"] || "/member-kit/images/avatar.png";
+  const img = photo || f["photo_base64"];
 
   return (
     <Page title="My Profile">
@@ -83,7 +84,7 @@ function Profile() {
           <table border={0} cellSpacing={0} cellPadding={0} style={{ width: "100%" }}>
             <tbody>
               <tr><td style={lbl}>Passport Photo</td><td style={{ width: "5%", fontSize: 16 }}>:</td>
-                <td><img src={img} alt="Passport" style={{ width: 322, maxWidth: "100%", height: 204, objectFit: "cover", border: "1px solid #ddd" }} onError={(e) => { (e.target as HTMLImageElement).style.visibility = "hidden"; }} /></td></tr>
+                <td>{img ? <img src={img} alt="Passport" style={{ width: 322, maxWidth: "100%", height: 204, objectFit: "cover", border: "1px solid #ddd" }} /> : <div className="flex h-48 items-center justify-center border border-border text-muted-foreground">No photo</div>}</td></tr>
               <tr><td style={lbl}>New Photo</td><td style={{ fontSize: 16 }}>:</td>
                 <td><input type="file" accept="image/*" onChange={onFile} style={{ border: 0, fontSize: 16, background: "transparent", padding: 0 }} /></td></tr>
               <tr className="lifeos-profile-spacer"><td style={{ height: 160 }} /><td /><td /></tr>
