@@ -18,6 +18,8 @@ export const Route = createFileRoute("/admin_/login")({
   component: AdminLogin,
 });
 
+const DEMO_EMAIL = "demo@lifeos.test";
+const DEMO_PASS = "Demo@1234";
 const CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 const makeCode = () => Array.from({ length: 5 }, () => CHARS[Math.floor(Math.random() * CHARS.length)]).join("");
 
@@ -35,6 +37,9 @@ function AdminLogin() {
       setErr("Security code does not match. Try again.");
       setCode(makeCode());
       return;
+    }
+    if (String(fd.get("email")).trim().toLowerCase() === DEMO_EMAIL && fd.get("password") === DEMO_PASS) {
+      adminToken.set(ADMIN_DEMO_TOKEN); navigate({ to: "/admin" }); return;
     }
     setBusy(true);
     try {
@@ -67,6 +72,10 @@ function AdminLogin() {
             <button className="admin-login-btn" type="reset" onClick={() => setErr(null)}>Cancel</button>
           </div>
         </form>
+        <div className="admin-login-err" style={{ textAlign: "left", marginTop: 12 }}>
+          ডেমো অ্যাডমিন (শুধু টেস্টের জন্য, আসল টাকার হিসাব বদলায় না):<br />
+          User ID: <b>{DEMO_EMAIL}</b><br />Password: <b>{DEMO_PASS}</b>
+        </div>
         <button type="button" className="admin-login-demo" onClick={demo}>View demo admin panel</button>
       </div>
     </div>
