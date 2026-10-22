@@ -34,8 +34,8 @@ function ChangePassword() {
         <table border={0} cellSpacing={0} cellPadding={0} style={{ width: "100%" }}>
           <tbody>
             <tr><td style={lbl}>Old Password *</td><td style={{ width: "2%", fontSize: 16 }}>:</td><td><input style={inp} type="password" value={cur} onChange={(e) => setCur(e.target.value)} required /></td></tr>
-            <tr><td style={lbl}>New Password *</td><td style={{ fontSize: 16 }}>:</td><td><input style={inp} type="password" value={nw} onChange={(e) => setNw(e.target.value)} required minLength={6} /></td></tr>
-            <tr><td style={lbl}>Confirm New Password *</td><td style={{ fontSize: 16 }}>:</td><td><input style={inp} type="password" value={cf} onChange={(e) => setCf(e.target.value)} required /></td></tr>
+            <tr><td style={lbl}>New Password *</td><td style={{ fontSize: 16 }}>:</td><td><input style={inp} type="password" value={nw} onChange={(e) => setNw(e.target.value)} required minLength={6} maxLength={72} /></td></tr>
+            <tr><td style={lbl}>Confirm New Password *</td><td style={{ fontSize: 16 }}>:</td><td><input style={inp} type="password" value={cf} onChange={(e) => setCf(e.target.value)} required maxLength={72} /></td></tr>
             <tr><td /><td /><td><input type="submit" value="Save" style={{ fontSize: 16, border: "1px solid #AAA", background: "#fff", padding: "2px 8px" }} /></td></tr>
           </tbody>
         </table>

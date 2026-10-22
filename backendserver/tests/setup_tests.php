@@ -30,7 +30,12 @@ if (getenv('LIFEOS_SETUP_TEST_PORT')) {
     $config->setValue(null, ['db' => ['host' => '127.0.0.1', 'port' => $port, 'name' => $name, 'user' => 'root', 'pass' => ''], 'auto_setup' => true]);
     $pdo = \LifeOS\DB::pdo();
     check($pdo->query('SELECT DATABASE()')->fetchColumn() === $name, 'Missing database is created automatically');
-    check((int) $pdo->query('SELECT COUNT(*) FROM lo_migrations')->fetchColumn() === 2, 'Both schema migrations complete on first connection');
+    $expected = count(glob(dirname(__DIR__) . '/database/*.sql') ?: []);
+    check((int) $pdo->query('SELECT COUNT(*) FROM lo_migrations')->fetchColumn() === $expected, 'Every packaged migration completes on first connection');
+    check($pdo->query("SELECT name FROM lo_migrations WHERE name='003_financial_safeguards.sql'")->fetchColumn() === '003_financial_safeguards.sql', 'Financial safeguards migration is recorded');
+    foreach (['lo_pool_movements', 'lo_allocations', 'lo_volumes', 'lo_volume_pairs', 'lo_matching_decisions', 'lo_statements'] as $table) {
+        check($pdo->query("SHOW TABLES LIKE '$table'")->fetchColumn() === $table, "$table is ready before activation");
+    }
     $pdo->exec("INSERT INTO lo_settings (k,v) VALUES ('setup_preserve_test','existing')");
     check(Migrations::apply($pdo) === [], 'Repeated setup does not rerun migrations');
     check($pdo->query("SELECT v FROM lo_settings WHERE k='setup_preserve_test'")->fetchColumn() === 'existing', 'Existing database rows survive repeated setup');

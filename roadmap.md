@@ -1,3 +1,8 @@
+# Current live admin/member completion
+- [ ] Diagnose and repair missing live activation tables with additive migration only; preserve existing accounts and financial records.
+- [ ] Exercise authenticated live member/admin reads and safe reversible controls; document each failure and fix confirmed defects.
+- [ ] Verify member/admin browser login and central flows against the real server; report financial-policy blockers without changing formulas.
+
 # Member panel and external server
 - [ ] Audit the complete re-uploaded marketing/account rules against current code; fix confirmed defects and run fresh isolated PHP/API regression tests. Current audit covers refund carries, source integrity, withdrawal approval and financial release gates; earlier pass counts are historical claims, not current verification.
 - [x] Recheck restored original attachment: fixed zero-cap fallback, blocked base Member rank rewards, and made reward replays balance-independent with amount-conflict rejection. Fresh local PHP API suite passes 75/75 checks; no external deployment performed.

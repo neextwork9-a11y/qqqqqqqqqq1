@@ -45,6 +45,7 @@ $router->post('/api/admin/members/{id}/status', function ($p) {
     Auth::admin();
     $b = Http::body();
     if (!in_array($b['status'] ?? '', ['active', 'suspended', 'pending'], true)) throw new HttpError('Invalid status');
+    if (!DB::one('SELECT id FROM users WHERE id = ?', [(int) $p['id']])) throw new HttpError('Member not found', 404);
     DB::run('UPDATE users SET status = ? WHERE id = ?', [$b['status'], (int) $p['id']]);
     Http::ok();
 });
@@ -86,8 +87,13 @@ $router->post('/api/admin/withdrawals/{id}/process', function ($p) {
     Auth::admin();
     $b = Http::body();
     if (!in_array($b['status'] ?? '', ['APPROVED', 'REJECTED'], true)) throw new HttpError('Invalid status');
-    DB::run('UPDATE lo_withdrawals SET status = ?, admin_note = ?, processed_at = NOW() WHERE id = ? AND status = "PENDING"',
-        [$b['status'], $b['note'] ?? null, (int) $p['id']]);
+    DB::tx(function () use ($p, $b) {
+        $w = DB::one('SELECT status FROM lo_withdrawals WHERE id = ? FOR UPDATE', [(int) $p['id']]);
+        if (!$w) throw new HttpError('Withdrawal not found', 404);
+        if ($w['status'] !== 'PENDING') throw new HttpError('Withdrawal already processed', 409);
+        DB::run('UPDATE lo_withdrawals SET status = ?, admin_note = ?, processed_at = NOW() WHERE id = ?',
+            [$b['status'], $b['note'] ?? null, (int) $p['id']]);
+    });
     Http::ok();
 });
 
@@ -104,6 +110,7 @@ $router->get('/api/admin/settings', function () {
 $router->post('/api/admin/settings', function ($p) {
     Auth::admin();
     $b = Http::body();
+    $validated = [];
     foreach (ADMIN_SETTING_KEYS as $k) {
         if (!isset($b[$k])) continue;
         $raw = (string) $b[$k];
@@ -116,8 +123,15 @@ $router->post('/api/admin/settings', function ($p) {
         if (in_array($k, ['withdraw_min', 'withdraw_max'], true) && (!is_numeric($raw) || (float) $raw < 0)) throw new HttpError("$k must be a positive number", 422);
         if ($k === 'withdraw_charge_pct' && (!is_numeric($raw) || (float) $raw < 0 || (float) $raw > 100)) throw new HttpError('withdraw_charge_pct must be between 0 and 100', 422);
         if (strlen($raw) > 255) throw new HttpError("$k is too long", 422);
-        DB::run('INSERT INTO lo_settings (k, v) VALUES (?, ?) ON DUPLICATE KEY UPDATE v = VALUES(v)', [$k, $raw]);
+        $validated[$k] = $raw;
     }
+    $current = [];
+    foreach (DB::all('SELECT k, v FROM lo_settings') as $row) $current[$row['k']] = $row['v'];
+    $limits = array_replace($current, $validated);
+    if ((float) ($limits['withdraw_max'] ?? 25000) > 0 && (float) ($limits['withdraw_min'] ?? 500) > (float) ($limits['withdraw_max'] ?? 25000)) throw new HttpError('Minimum withdrawal must not exceed maximum', 422);
+    DB::tx(function () use ($validated) {
+        foreach ($validated as $k => $raw) DB::run('INSERT INTO lo_settings (k, v) VALUES (?, ?) ON DUPLICATE KEY UPDATE v = VALUES(v)', [$k, $raw]);
+    });
     Http::ok();
 });
 
@@ -323,8 +337,10 @@ $router->post('/api/admin/notices', function () {
         if ($d !== '' && !preg_match('/^\d{4}-\d{2}-\d{2}$/', $d)) throw new HttpError("Invalid $k", 422);
         $dates[] = $d ?: null;
     }
+    \LifeOS\PanelPolicy::dates($dates[0], $dates[1]);
     $title = mb_substr(trim((string) ($b['title'] ?? '')), 0, 190) ?: null;
     if (!empty($b['id'])) {
+        if (!DB::one('SELECT id FROM lo_notices WHERE id = ? AND kind = ?', [(int) $b['id'], $kind])) throw new HttpError('Notice not found', 404);
         DB::run('UPDATE lo_notices SET title = ?, content = ?, show_from = ?, show_to = ?, updated_by = ? WHERE id = ? AND kind = ?',
             [$title, $content, $dates[0], $dates[1], $admin['name'], (int) $b['id'], $kind]);
         Http::ok(['id' => (int) $b['id']]);
@@ -335,13 +351,14 @@ $router->post('/api/admin/notices', function () {
 
 $router->post('/api/admin/notices/{id}/toggle', function ($p) {
     Auth::admin();
+    if (!DB::one('SELECT id FROM lo_notices WHERE id = ?', [(int) $p['id']])) throw new HttpError('Notice not found', 404);
     DB::run('UPDATE lo_notices SET is_visible = 1 - is_visible WHERE id = ?', [(int) $p['id']]);
     Http::ok();
 });
 
 $router->post('/api/admin/notices/{id}/delete', function ($p) {
     Auth::admin();
-    DB::run('DELETE FROM lo_notices WHERE id = ?', [(int) $p['id']]);
+    if (!DB::run('DELETE FROM lo_notices WHERE id = ?', [(int) $p['id']])) throw new HttpError('Notice not found', 404);
     Http::ok();
 });
 
@@ -350,7 +367,7 @@ $router->post('/api/admin/password', function () {
     $b = Http::body();
     if (!password_verify((string) ($b['current'] ?? ''), (string) ($admin['password'] ?? ''))) throw new HttpError('Current password is wrong', 422);
     $new = (string) ($b['new'] ?? '');
-    if (strlen($new) < 8) throw new HttpError('New password must be at least 8 characters', 422);
+    if (strlen($new) < 8 || strlen($new) > 72) throw new HttpError('New password must be 8–72 characters', 422);
     DB::run('UPDATE admin_users SET password = ? WHERE id = ?', [password_hash($new, PASSWORD_DEFAULT), (int) $admin['id']]);
     Http::ok();
 });

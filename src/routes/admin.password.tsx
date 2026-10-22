@@ -31,8 +31,8 @@ function PasswordChange() {
         <table className="table" cellPadding={8} style={{ margin: "10px auto" }}>
           <tbody>
             <tr><th align="right">Current Password</th><td><input type="password" name="current" required autoComplete="current-password" /></td></tr>
-            <tr><th align="right">New Password (min 8 chars)</th><td><input type="password" name="new" required minLength={8} autoComplete="new-password" /></td></tr>
-            <tr><th align="right">Confirm New Password</th><td><input type="password" name="confirm" required autoComplete="new-password" /></td></tr>
+            <tr><th align="right">New Password (8–72 chars)</th><td><input type="password" name="new" required minLength={8} maxLength={72} autoComplete="new-password" /></td></tr>
+            <tr><th align="right">Confirm New Password</th><td><input type="password" name="confirm" required maxLength={72} autoComplete="new-password" /></td></tr>
           </tbody>
         </table>
         <Msg {...msg} />
