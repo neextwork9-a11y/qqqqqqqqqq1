@@ -9,8 +9,11 @@ lerna-debug.log*
 
 node_modules
 dist
+dist-netlify
 dist-ssr
 .output
+.netlify/
+.vs/
 .vinxi
 .tanstack/**
 .nitro

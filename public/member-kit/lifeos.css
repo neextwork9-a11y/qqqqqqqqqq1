@@ -1,0 +1,59 @@
+/* Life OS brand overrides on top of the reference kit style sheets. */
+.lifeos-member .header_content.lifeos-banner { background: url(images/banner.jpg) no-repeat center center; background-size: cover; height: 200px; }
+.lifeos-member .profile_images { border: 1px solid #009541; padding: 10px; }
+.lifeos-member .profile_images table th, .lifeos-member .profile_images table td { border: 1px solid #009541; }
+.lifeos-member .profile_images table th { background: #009541; color: #FFFFFF; }
+.lifeos-member .right { text-align: right; }
+.lifeos-member .anchor_button { background: #009541; padding: 7px 10px; margin-left: 10px; border-radius: 5px; color: #FFFFFF !important; font-weight: bold !important; text-decoration: none !important; }
+.lifeos-member .site_scroll_bottom { background: #009541; width: 100%; position: fixed; bottom: 0; height: 30px; padding-top: 5px; }
+.lifeos-member .site_scroll { width: 96%; padding: 0 20px 10px 20px; overflow: hidden; }
+.lifeos-member .site_scroll_container { width: 100%; overflow: hidden; }
+.lifeos-member .site_scroll_container span { display: inline-block; margin-right: 35px; font-size: 14px; line-height: 20px; color: #FFFFFF; }
+.lifeos-member .lifeos-marquee { white-space: nowrap; animation: lifeosMarquee 35s linear infinite; padding-left: 100%; }
+@keyframes lifeosMarquee { to { transform: translateX(-100%); } }
+.lifeos-member #wrapper { padding-bottom: 50px; }
+.lifeos-member .tree-node { display: inline-block; text-align: center; min-width: 80px; }
+.lifeos-member .tree-node .avatar { width: 60px; height: 60px; border-radius: 50%; background: #e8f5ec; border: 2px solid #009541; display: inline-block; line-height: 60px; font-weight: bold; color: #009541; }
+.lifeos-member .tree-node.inactive .avatar { border-color: #AAA; color: #999; background: #f4f4f4; }
+
+/* Undo the site-wide reset inside the member panel so the kit's legacy table attributes render 1:1. */
+.lifeos-member table:not(.table) { border-collapse: separate; text-indent: 0; }
+.lifeos-member .table { border-collapse: collapse; }
+.lifeos-member .main_bg > #heading { text-align: left; }
+.lifeos-member th { text-align: center; font-weight: bold; }
+.lifeos-member table[cellpadding="2"] > tbody > tr > td, .lifeos-member table[cellpadding="2"] > tbody > tr > th { padding: 2px; }
+.lifeos-member table[cellpadding="5"] > tbody > tr > td, .lifeos-member table[cellpadding="5"] > tbody > tr > th { padding: 5px; }
+.lifeos-member table[cellpadding="7"] > tbody > tr > td, .lifeos-member table[cellpadding="7"] > tbody > tr > th { padding: 7px; }
+.lifeos-member table[cellspacing="7"] { border-spacing: 7px; }
+.lifeos-member table[cellspacing="0"] { border-spacing: 0; }
+.lifeos-member img { display: inline; max-width: none; height: revert-layer; }
+.lifeos-member ul, .lifeos-member ol { list-style: revert; }
+.lifeos-member .ddsmoothmenu ul { list-style: none; }
+.lifeos-member hr { border: 0; border-top: 1px solid #ccc; margin: 8px 0; }
+.lifeos-member input, .lifeos-member select { border: 1px solid #AAA; padding: 2px 5px; background: #fff; }
+.lifeos-member input[type="submit"], .lifeos-member button[type="submit"] { background: #EDEDED; padding: 3px 8px; cursor: pointer; }
+.lifeos-member .print { text-align: right; padding: 0 20px 20px; }
+.lifeos-member .print img { cursor: pointer; }
+.lifeos-member .my-userid { padding: 0 20px 20px 20px; font-size: 16px; text-align: right; }
+.lifeos-member-bg { background: url(images/back.jpg) repeat #B7D6FF; min-height: 100vh; font-family: Tahoma, Geneva, sans-serif; font-size: 12px; line-height: 1.3em; color: #000; }
+.lifeos-member .lifeos-profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px; }
+.lifeos-member .main_bg > #heading { font-size: 36px; font-weight: normal; color: #333; margin: 10px 0 20px; }
+
+
+/* A single desktop canvas is uniformly scaled by MemberShell on every device. */
+.lifeos-member-viewport { width: 100%; min-width: 0; min-height: 100vh; }
+.lifeos-member { width: 1100px; margin: 0 auto; }
+.lifeos-member, .lifeos-member * { box-sizing: border-box; }
+.lifeos-member #wrapper, .lifeos-member .content_full, .lifeos-member .content_menu, .lifeos-member .mid_image { width: 1100px; }
+.lifeos-member img { max-width: 100%; height: auto; }
+.lifeos-member input, .lifeos-member select, .lifeos-member textarea { max-width: 100%; }
+.lifeos-member table { max-width: 100%; }
+.lifeos-member td, .lifeos-member th { overflow-wrap: anywhere; }
+.lifeos-member #menu > ul { display: flow-root; }
+.lifeos-member #menu ul li ul li a { width: 100%; }
+.lifeos-member .lifeos-profile-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.lifeos-member .lifeos-profile-grid > table { min-width: 0; }
+@media (prefers-reduced-motion: reduce) { .lifeos-member .lifeos-marquee { animation: none; padding-left: 0; } }
+
+/* Admin footer bar (matches the reference admin kit copyright strip) */
+.lifeos-member .lifeos-admin-footer { position: fixed; bottom: 0; left: 0; width: 100%; background: #0b5d1e; color: #fff; font-size: 11px; letter-spacing: 1px; text-align: center; padding: 8px 0; }

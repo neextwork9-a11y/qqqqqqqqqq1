@@ -1,0 +1,8 @@
+Options -Indexes
+RewriteEngine On
+# mod_rewrite drops the Authorization header; re-inject it for PHP.
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+# Block direct access to internals
+RewriteRule ^(src|database|storage|config\.php|config\.example\.php|README\.md)(/|$) - [F,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]

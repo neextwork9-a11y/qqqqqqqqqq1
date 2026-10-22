@@ -1,0 +1,702 @@
+<html xmlns="http://www.w3.org/1999/xhtml" class="fa-events-icons-ready" style=""><head><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Actual Green Corporation</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="icon" type="image/png" href="https://softwareserverhosted.com/myagc/includes/images/icon.png">
+	<link href="https://softwareserverhosted.com/myagc/includes/css/style.css" rel="stylesheet" type="text/css">
+	<link href="https://softwareserverhosted.com/myagc/includes/css/base/jquery.ui.all.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="https://softwareserverhosted.com/myagc/includes/js/jquery-1.8.2.js"></script>
+	<script src="https://softwareserverhosted.com/myagc/includes/js/jquery-ui-1.9.1.custom.js" type="text/javascript"></script>
+	<script src="https://softwareserverhosted.com/myagc/includes/js/ui/jquery.ui.datepicker.js" type="text/javascript"></script>
+	<script type="text/javascript" src="https://softwareserverhosted.com/myagc/includes/js/marque.js"></script>
+	<script src="https://use.fontawesome.com/b71919079b.js"></script><link rel="stylesheet" href="https://use.fontawesome.com/b71919079b.css" media="all">
+<script type="text/javascript">
+	$(document).ready(function(e) {
+		$('.print img').click(function(e) {
+			if( $('table.table')[0]) {
+				var data = $('table.table').html();
+				var header_title = $('.main_bg h2#heading').html();
+				var mywindow = window.open('', header_title, 'height=600,width=1100');
+				mywindow.document.write('<html><head><title>'+header_title+'</title>');
+				mywindow.document.write('</head><body><div><table class="table" border="1" width="100%" cellspacing="0" cellpadding="0">'); //<img src="images/logo.png" height="100" border="0" />
+				mywindow.document.write('<style>');
+				mywindow.document.write('.table th { background-color: #009541; padding: 5px 2px; color: #FFFFFF }');
+				mywindow.document.write('.table { border:6px solid #009541; border-top:0; border-collapse:collapse;  }');
+				mywindow.document.write('.table td { border: 1px solid #009541; padding: 5px; }');
+				mywindow.document.write('</style>');
+				mywindow.document.write(data);
+				mywindow.document.write('</table></div></body></html>');
+				mywindow.print();
+				mywindow.close();
+			}
+		});
+	});
+</script></head>
+
+<body style=""><div class="ddshadow toplevelshadow" style="left: 907.531px; top: 255px; width: 200px; height: 0px; overflow: hidden;"><div class="ddshadow" style="left: 200px; top: 128px; opacity: 0;"></div><div class="ddshadow" style="left: 200px; top: 96px;"></div><div class="ddshadow" style="left: 200px; top: 64px;"></div></div><div class="ddshadow toplevelshadow" style="left: 720.198px; top: 255px; overflow: hidden; height: 0px;"></div><div class="ddshadow toplevelshadow" style="left: 563.219px; top: 255px; width: 200px; height: 0px; overflow: hidden;"></div><div class="ddshadow toplevelshadow" style="left: 412px; top: 255px;"></div><div class="ddshadow toplevelshadow" style="left: 265.969px; top: 255px;"></div><div class="ddshadow toplevelshadow" style="left: 97.3333px; top: 255px;"></div>
+	<div class="content_full">
+		<div class="header_content"><a href="https://softwareserverhosted.com/myagc">&nbsp;</a></div>
+	</div>
+	<div class="content_menu"><link rel="stylesheet" type="text/css" href="https://softwareserverhosted.com/myagc/includes/css/ddsmoothmenu.css">
+<script type="text/javascript" src="https://softwareserverhosted.com/myagc/includes/js/ddsmoothmenu.js"></script>
+<script type="text/javascript">
+	ddsmoothmenu.init({
+		mainmenuid: "menu",
+		orientation: 'h',
+		classname: 'ddsmoothmenu',
+		contentsource: "markup"
+	});
+</script>
+<div id="menu" class="ddsmoothmenu">
+	<ul>
+				<li style="z-index: 100;">
+			<a href="#">Account State <i class="fa fa-chevron-down" aria-hidden="true"></i><span style="display: block;" class=""></span></a>
+			<ul style="display: none; top: 50px; visibility: visible;">
+				<li><a href="https://softwareserverhosted.com/myagc/member/account.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Dashboard</a></li>
+				<li><a href="https://softwareserverhosted.com/myagc/member/commission.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Bonus Report</a></li>
+				<li><a href="https://softwareserverhosted.com/myagc/member/profile.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Profile View/Edit</a></li>
+				<li><a href="https://softwareserverhosted.com/myagc/member/change_password.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Password Change/Reset</a></li>
+				<li><a href="https://softwareserverhosted.com/myagc/member/notice.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Account Notice</a></li>
+				<li><a href="https://softwareserverhosted.com/myagc/includes/php/logout.php"><i class="fa fa-lock" aria-hidden="true"></i>Logout</a></li>
+				<span></span>
+			</ul>
+		</li>
+		<li style="z-index: 99;">
+			<a href="#">Sales View <i class="fa fa-chevron-down" aria-hidden="true"></i><span style="display: block;" class=""></span></a>
+			<ul style="display: none; top: 50px; visibility: visible;">
+								<li><a href="https://softwareserverhosted.com/myagc/member/tree.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Genealogy Tree</a></li>
+				<li><a href="https://softwareserverhosted.com/myagc/member/referral_step.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Sponsors List</a></li>
+				<li><a href="https://softwareserverhosted.com/myagc/member/referral_level.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Generation List</a></li>
+				<li><a href="https://softwareserverhosted.com/myagc/member/statistics.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Statistics View</a></li>
+				<li><a href="https://softwareserverhosted.com/myagc/member/purchase.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Purchase Report</a></li>
+				<li><a href="https://softwareserverhosted.com/myagc/product.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Product List</a></li>
+				<span></span>
+			</ul>
+		</li>
+		<li style="z-index: 98;">
+			<a href="#">Transaction <i class="fa fa-chevron-down" aria-hidden="true"></i><span style="display: block;" class=""></span></a>
+			<ul style="display: none; top: 50px; visibility: visible;">
+				<li><a href="https://softwareserverhosted.com/myagc/member/transaction.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Balance Transfer</a></li>
+				<li><a href="https://softwareserverhosted.com/myagc/member/transaction_out.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Balance Transfer Report</a></li>
+				<li><a href="https://softwareserverhosted.com/myagc/member/transaction_in.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Balance Receive Report</a></li>
+				<li><a href="https://softwareserverhosted.com/myagc/member/transfer_report.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Balance Add Report</a></li>
+				<span></span>
+			</ul>
+		</li>
+		<li style="z-index: 97;">
+			<a href="#" class="">Withdrawals <i class="fa fa-chevron-down" aria-hidden="true"></i><span style="display: block;" class=""></span></a>
+			<ul style="top: 50px; visibility: visible; left: 0px; width: 200px; display: none;">
+				<li><a href="https://softwareserverhosted.com/myagc/member/withdrawals.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Withdrawals Form</a></li>
+				<li><a href="https://softwareserverhosted.com/myagc/member/withdrawals_report.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Withdrawals Reports</a></li>
+				<span></span>
+			</ul>
+		</li>
+		<li style="z-index: 96;">
+			<a href="#" class="">Mobile Recharge <i class="fa fa-chevron-down" aria-hidden="true"></i><span style="display: block;" class=""></span></a>
+			<ul style="display: none; top: 50px; visibility: visible;">
+				<li><a href="https://softwareserverhosted.com/myagc/member/recharge.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Mobile Recharge Form</a></li>
+				<li><a href="https://softwareserverhosted.com/myagc/member/recharge_report.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Mobile Recharge Reports</a></li>
+				<span></span>
+			</ul>
+		</li>
+				<li style="z-index: 95;">
+			<a href="#" class="">Stockiest<i class="fa fa-chevron-down" aria-hidden="true"></i><span style="display: block;" class=""></span></a>
+			<ul style="top: 50px; visibility: visible; left: 0px; width: 200px; display: none;">
+								<li><a href="https://softwareserverhosted.com/myagc/member/dashboard.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Stockiest Dashboard</a></li>
+				<li><a href="https://softwareserverhosted.com/myagc/member/payment_report.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Payment Requests</a></li>
+				<li style="z-index: 94;">
+					<a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i>Withdrawals Payments<span style="display: block;" class="rightarrowclass"></span></a>
+					<ul style="display: none; top: 0px; visibility: visible;">
+						<li><a href="https://softwareserverhosted.com/myagc/member/withdrawals_action.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Withdrawals Action</a></li>
+						<li><a href="https://softwareserverhosted.com/myagc/member/withdrawals_agent.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Withdrawals Paid Reports</a></li>
+						<span></span>
+					</ul>
+				</li>
+												<li style="z-index: 93;">
+					<a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i>Products Requisition<span style="display: block;" class="rightarrowclass"></span></a>
+					<ul style="display: none; top: 0px; visibility: visible;">
+						<li><a href="https://softwareserverhosted.com/myagc/member/requisition_list.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Requisition List</a></li>
+						<li><a href="https://softwareserverhosted.com/myagc/member/requisition_form.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Requisition Form</a></li>
+						<span></span>
+					</ul>
+				</li>
+				<li style="z-index: 92;">
+					<a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i>Products Transsaction<span style="display: block;" class="rightarrowclass"></span></a>
+					<ul style="display: none; top: 0px; visibility: visible;">
+						<li><a href="https://softwareserverhosted.com/myagc/member/prod_transfer_form.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Transfer Form</a></li>
+						<li><a href="https://softwareserverhosted.com/myagc/member/prod_transfer_report.php?type=transfer"><i class="fa fa-chevron-right" aria-hidden="true"></i>Transfer Report</a></li>
+						<li><a href="https://softwareserverhosted.com/myagc/member/prod_transfer_report.php?type=receive"><i class="fa fa-chevron-right" aria-hidden="true"></i>Receive Report</a></li>
+						<span></span>
+					</ul>
+				</li>
+				<li><a href="https://softwareserverhosted.com/myagc/member/sales_report.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Sales Report</a></li>
+				<li><a href="https://softwareserverhosted.com/myagc/member/sales_form.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Sales Form</a></li>
+				<li><a href="https://softwareserverhosted.com/myagc/member/register.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Register Form</a></li>
+				<li><a href="https://softwareserverhosted.com/myagc/stock.php"><i class="fa fa-chevron-right" aria-hidden="true"></i>Stock List</a></li>
+								<span></span>
+			</ul>
+		</li>
+						<li><a href="https://softwareserverhosted.com/myagc/includes/php/logout.php">Logout <i class="fa fa-lock" aria-hidden="true"></i></a></li>
+	</ul>
+	<br style="clear: left">
+</div>
+</div>
+	<div id="wrapper">
+		<div class="mid_image">
+			<div id="main_member">
+				<div class="main_bg about">
+	<h2 id="heading">Generation Level List</h2>
+		<form action="/myagc/member/referral_level.php" method="post">
+		<b>Generation Level Start:</b>
+		<select name="level_start" style="width:60px; margin-left:10px;">
+			<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option>		</select>
+		<b style="margin-left:50px;">Generation Level End:</b>
+		<select name="level_end" style="width:60px; margin-left:10px;">
+			<option value="1">1</option><option value="2">2</option><option value="3" selected="">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option>		</select>
+		<input type="submit" name="go" id="go" value="Go" style="margin-left:50px;">
+	</form>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table" style="margin-top:10px;">
+		<caption><u>Generation Level: 1 ( 7 )</u></caption>
+		<thead>
+			<tr>
+				<th>SN</th>
+				<th>Username</th>
+				<th>Full Name</th>
+				<th>Sponsor ID</th>
+				<th>Placement ID</th>
+				<th>Reg. Date</th>
+				<th>Rank</th>
+				<th>Purchased</th>
+			</tr>
+		</thead>
+		<tbody>
+						<tr>
+				<td>1</td>
+				<td>10002</td>
+				<td>Actual Green Corporation</td>
+				<td>2023-05-01</td>
+				<td>admin</td>
+				<td>admin</td>
+				<td>Register Seller</td>
+				<td>6000.00</td>
+			</tr>
+						<tr>
+				<td>2</td>
+				<td>10004</td>
+				<td>Actual Green Corporation</td>
+				<td>2023-05-04</td>
+				<td>admin</td>
+				<td>admin</td>
+				<td>Basic Mmeber</td>
+				<td>2000.00</td>
+			</tr>
+						<tr>
+				<td>3</td>
+				<td>10005</td>
+				<td>Actual Green Corporation</td>
+				<td>2023-05-04</td>
+				<td>admin</td>
+				<td>admin</td>
+				<td>Basic Mmeber</td>
+				<td>2000.00</td>
+			</tr>
+						<tr>
+				<td>4</td>
+				<td>10015</td>
+				<td>BMM Association</td>
+				<td>2023-05-15</td>
+				<td>admin</td>
+				<td>10003</td>
+				<td>Register Seller</td>
+				<td>5100.00</td>
+			</tr>
+						<tr>
+				<td>5</td>
+				<td>10017</td>
+				<td>Pranab Kumar Das</td>
+				<td>2023-05-18</td>
+				<td>admin</td>
+				<td>10013</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>6</td>
+				<td>10118</td>
+				<td>M Nasir Uddin Mahmood</td>
+				<td>2023-05-21</td>
+				<td>admin</td>
+				<td>10009</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>7</td>
+				<td>10279</td>
+				<td>Test 2</td>
+				<td>2023-06-04</td>
+				<td>admin</td>
+				<td>10014</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+					</tbody>
+	</table>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table" style="margin-top:10px;">
+		<caption><u>Generation Level: 2 ( 15 )</u></caption>
+		<thead>
+			<tr>
+				<th>SN</th>
+				<th>Username</th>
+				<th>Full Name</th>
+				<th>Sponsor ID</th>
+				<th>Placement ID</th>
+				<th>Reg. Date</th>
+				<th>Rank</th>
+				<th>Purchased</th>
+			</tr>
+		</thead>
+		<tbody>
+						<tr>
+				<td>1</td>
+				<td>10003</td>
+				<td>Actual Green Corporation</td>
+				<td>2023-05-01</td>
+				<td>10002</td>
+				<td>10002</td>
+				<td>Register Seller</td>
+				<td>6000.00</td>
+			</tr>
+						<tr>
+				<td>2</td>
+				<td>10006</td>
+				<td>Actual Green Corporation</td>
+				<td>2023-05-04</td>
+				<td>10002</td>
+				<td>10002</td>
+				<td>Basic Mmeber</td>
+				<td>2000.00</td>
+			</tr>
+						<tr>
+				<td>3</td>
+				<td>10007</td>
+				<td>Actual Green Corporation</td>
+				<td>2023-05-04</td>
+				<td>10002</td>
+				<td>10002</td>
+				<td>Basic Mmeber</td>
+				<td>2000.00</td>
+			</tr>
+						<tr>
+				<td>4</td>
+				<td>10008</td>
+				<td>Actual Green Corporation</td>
+				<td>2023-05-05</td>
+				<td>10004</td>
+				<td>10004</td>
+				<td>Basic Mmeber</td>
+				<td>2000.00</td>
+			</tr>
+						<tr>
+				<td>5</td>
+				<td>10009</td>
+				<td>Actual Green Corporation</td>
+				<td>2023-05-05</td>
+				<td>10004</td>
+				<td>10004</td>
+				<td>Basic Mmeber</td>
+				<td>2000.00</td>
+			</tr>
+						<tr>
+				<td>6</td>
+				<td>10011</td>
+				<td>Actual Green Corporation</td>
+				<td>2023-05-05</td>
+				<td>10005</td>
+				<td>10005</td>
+				<td>Basic Mmeber</td>
+				<td>2000.00</td>
+			</tr>
+						<tr>
+				<td>7</td>
+				<td>10012</td>
+				<td>Actual Green Corporation</td>
+				<td>2023-05-05</td>
+				<td>10005</td>
+				<td>10005</td>
+				<td>Basic Mmeber</td>
+				<td>2000.00</td>
+			</tr>
+						<tr>
+				<td>8</td>
+				<td>10013</td>
+				<td>Actual Green Corporation</td>
+				<td>2023-05-05</td>
+				<td>10005</td>
+				<td>10005</td>
+				<td>Basic Mmeber</td>
+				<td>2000.00</td>
+			</tr>
+						<tr>
+				<td>9</td>
+				<td>10016</td>
+				<td>Morsheda Akter 01</td>
+				<td>2023-05-17</td>
+				<td>10015</td>
+				<td>10015</td>
+				<td>Register Seller</td>
+				<td>28805.00</td>
+			</tr>
+						<tr>
+				<td>10</td>
+				<td>10448</td>
+				<td>MD ABUL BASHAR</td>
+				<td>2023-06-25</td>
+				<td>10015</td>
+				<td>10015</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>11</td>
+				<td>10018</td>
+				<td>Pranab1</td>
+				<td>2023-05-18</td>
+				<td>10017</td>
+				<td>10017</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>12</td>
+				<td>10019</td>
+				<td>pranab2</td>
+				<td>2023-05-18</td>
+				<td>10017</td>
+				<td>10017</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>13</td>
+				<td>10020</td>
+				<td>Pranab3</td>
+				<td>2023-05-18</td>
+				<td>10017</td>
+				<td>10017</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>14</td>
+				<td>13100</td>
+				<td>Pranab Kumar Das (Bejoy) </td>
+				<td>2024-04-09</td>
+				<td>10017</td>
+				<td>11002</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>15</td>
+				<td>11124</td>
+				<td>M nasir Uddin </td>
+				<td>2023-09-22</td>
+				<td>10118</td>
+				<td>10118</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+					</tbody>
+	</table>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table" style="margin-top:10px;">
+		<caption><u>Generation Level: 3 ( 23 )</u></caption>
+		<thead>
+			<tr>
+				<th>SN</th>
+				<th>Username</th>
+				<th>Full Name</th>
+				<th>Sponsor ID</th>
+				<th>Placement ID</th>
+				<th>Reg. Date</th>
+				<th>Rank</th>
+				<th>Purchased</th>
+			</tr>
+		</thead>
+		<tbody>
+						<tr>
+				<td>1</td>
+				<td>10014</td>
+				<td>test 01</td>
+				<td>2023-05-15</td>
+				<td>10013</td>
+				<td>10013</td>
+				<td>Register Seller</td>
+				<td>6680.00</td>
+			</tr>
+						<tr>
+				<td>2</td>
+				<td>10365</td>
+				<td>MEHJABIN </td>
+				<td>2023-06-14</td>
+				<td>10016</td>
+				<td>10016</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>3</td>
+				<td>10366</td>
+				<td>Jony</td>
+				<td>2023-06-15</td>
+				<td>10016</td>
+				<td>10365</td>
+				<td>Register Seller</td>
+				<td>5025.00</td>
+			</tr>
+						<tr>
+				<td>4</td>
+				<td>10367</td>
+				<td>Jahid</td>
+				<td>2023-06-15</td>
+				<td>10016</td>
+				<td>10366</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>5</td>
+				<td>10369</td>
+				<td>Sumaya </td>
+				<td>2023-06-15</td>
+				<td>10016</td>
+				<td>10367</td>
+				<td>Register Seller</td>
+				<td>5025.00</td>
+			</tr>
+						<tr>
+				<td>6</td>
+				<td>10370</td>
+				<td>Tisha</td>
+				<td>2023-06-15</td>
+				<td>10016</td>
+				<td>10016</td>
+				<td>Register Seller</td>
+				<td>5400.00</td>
+			</tr>
+						<tr>
+				<td>7</td>
+				<td>10681</td>
+				<td>Shamsuddoha bahaddur</td>
+				<td>2023-08-10</td>
+				<td>10016</td>
+				<td>10016</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>8</td>
+				<td>10449</td>
+				<td>Bashar 1</td>
+				<td>2023-06-25</td>
+				<td>10448</td>
+				<td>10448</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>9</td>
+				<td>10450</td>
+				<td>Bashar 2</td>
+				<td>2023-06-25</td>
+				<td>10448</td>
+				<td>10448</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>10</td>
+				<td>10451</td>
+				<td>Bashar 3</td>
+				<td>2023-06-25</td>
+				<td>10448</td>
+				<td>10448</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>11</td>
+				<td>12452</td>
+				<td>MD AMINUL ISLAM</td>
+				<td>2024-02-01</td>
+				<td>10448</td>
+				<td>12273</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>12</td>
+				<td>13183</td>
+				<td>ABDUL LATIF DAKU</td>
+				<td>2024-04-27</td>
+				<td>10448</td>
+				<td>10453</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>13</td>
+				<td>10021</td>
+				<td>Pranab4</td>
+				<td>2023-05-18</td>
+				<td>10018</td>
+				<td>10018</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>14</td>
+				<td>10022</td>
+				<td>Pranab5</td>
+				<td>2023-05-18</td>
+				<td>10018</td>
+				<td>10018</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>15</td>
+				<td>10023</td>
+				<td>Pranab6</td>
+				<td>2023-05-18</td>
+				<td>10018</td>
+				<td>10018</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>16</td>
+				<td>10024</td>
+				<td>Pranab7</td>
+				<td>2023-05-18</td>
+				<td>10019</td>
+				<td>10019</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>17</td>
+				<td>10025</td>
+				<td>Pranab8</td>
+				<td>2023-05-18</td>
+				<td>10019</td>
+				<td>10019</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>18</td>
+				<td>10026</td>
+				<td>Pranab9</td>
+				<td>2023-05-18</td>
+				<td>10019</td>
+				<td>10019</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>19</td>
+				<td>10027</td>
+				<td>Pranab10</td>
+				<td>2023-05-18</td>
+				<td>10020</td>
+				<td>10020</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>20</td>
+				<td>10028</td>
+				<td>Prabab11</td>
+				<td>2023-05-18</td>
+				<td>10020</td>
+				<td>10020</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>21</td>
+				<td>10029</td>
+				<td>Pranab12</td>
+				<td>2023-05-18</td>
+				<td>10020</td>
+				<td>10020</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>22</td>
+				<td>13562</td>
+				<td>Abdul Qayyum</td>
+				<td>2024-06-06</td>
+				<td>13100</td>
+				<td>13100</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+						<tr>
+				<td>23</td>
+				<td>11125</td>
+				<td>Ma babar dua</td>
+				<td>2023-09-22</td>
+				<td>11124</td>
+				<td>11124</td>
+				<td>Register Seller</td>
+				<td>5000.00</td>
+			</tr>
+					</tbody>
+	</table>
+		</div>
+					
+			</div>
+			<div style="padding: 0px 20px 20px 20px; font-size: 16px; text-align: right;">
+				My User ID: admin			</div>
+			<div class="print"><img src="https://softwareserverhosted.com/myagc/includes/images/printer.png" width="32" title="Print Inner Content"></div>		</div>
+	</div>
+	<div class="fotter">
+		<div style="text-align: right;">Copyright © 2026 <a href="https://softwareserverhosted.com/myagc">Actual Green Corporation</a> | All rights reserved.</div>
+	</div>
+		<style>
+		.fotter { margin-bottom: 50px; }
+		.site_scroll_bottom { background: #009541; width: 100%; position: fixed; bottom: 0px; height: 30px; padding-top: 5px; }
+		.site_scroll { margin: 0px auto; width: 96%; padding: 0px 20px 10px 20px; overflow: hidden; }
+		.site_scroll_container { width: 100%; overflow: hidden; float: left; }
+		.site_scroll_container span { display: inline-block; margin-right: 35px; font-size: 14px; line-height: 20px; color: #FFFFFF; }
+	@-webkit-keyframes marqueeAnimation-1001721  { 100%  {margin-left:-813px}}@-webkit-keyframes marqueeAnimation-1001721  { 100%  {margin-left:-813px}}</style>
+	<script>
+		$(document).ready(function(e) {
+						$('.site_scroll_container').show();
+			$('.marquee').marquee({
+				duration: 35000,
+				gap: $('.marquee').width(),
+				delayBeforeStart: 0,
+				direction: 'left',
+				duplicated: false,
+				pauseOnHover: true
+			});
+					});
+	</script>
+	<div class="site_scroll_bottom" style="">
+		<div class="site_scroll">
+			<div class="site_scroll_container" style="">
+				<div class="marquee"><div style="width: 100000px; margin-left: 1214px; animation: 58.439s linear 0s infinite normal none running marqueeAnimation-1001721;" class="js-marquee-wrapper"><div class="js-marquee" style="margin-right: 0px; float: left;">
+					<span>our 4th celebration program date has been announced on  26 and 27 July 2024 </span><span>4th celebration program location is Sylhet </span>				</div></div></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	
+</body></html>
