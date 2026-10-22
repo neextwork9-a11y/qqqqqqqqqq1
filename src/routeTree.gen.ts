@@ -10,33 +10,771 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AudioGalleryRouteImport } from './routes/audio-gallery'
+import { Route as AwardsRouteImport } from './routes/awards'
+import { Route as BusinessCenterRouteImport } from './routes/business-center'
+import { Route as BusinessCollaborationRouteImport } from './routes/business-collaboration'
+import { Route as BusinessOpportunityRouteImport } from './routes/business-opportunity'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CrystalCellRouteImport } from './routes/crystal-cell'
+import { Route as DoubleStemcellRouteImport } from './routes/double-stemcell'
+import { Route as FaqGeneralRouteImport } from './routes/faq-general'
+import { Route as FaqProductRouteImport } from './routes/faq-product'
+import { Route as FaqReturnGoodsRouteImport } from './routes/faq-return-goods'
+import { Route as FounderRouteImport } from './routes/founder'
+import { Route as HalalCertificatesRouteImport } from './routes/halal-certificates'
+import { Route as JoinRouteImport } from './routes/join'
+import { Route as JoinUsRouteImport } from './routes/join-us'
+import { Route as LatestEventRouteImport } from './routes/latest-event'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as MemberRouteImport } from './routes/member'
+import { Route as MilestonesRouteImport } from './routes/milestones'
+import { Route as NewsEventsRouteImport } from './routes/news-events'
+import { Route as PhotoGalleryRouteImport } from './routes/photo-gallery'
+import { Route as ProductVideosRouteImport } from './routes/product-videos'
+import { Route as ScientistsRouteImport } from './routes/scientists'
+import { Route as SeniorManagementRouteImport } from './routes/senior-management'
+import { Route as TripleStemcellH2oRouteImport } from './routes/triple-stemcell-h2o'
+import { Route as VideoGalleryRouteImport } from './routes/video-gallery'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminActivationsRouteImport } from './routes/admin.activations'
+import { Route as AdminBalanceAddRouteImport } from './routes/admin.balance-add'
+import { Route as AdminJoiningReportRouteImport } from './routes/admin.joining-report'
+import { Route as AdminLedgerRouteImport } from './routes/admin.ledger'
+import { Route as AdminMatchingEventsRouteImport } from './routes/admin.matching-events'
+import { Route as AdminMemberListRouteImport } from './routes/admin.member-list'
+import { Route as AdminMemberReportRouteImport } from './routes/admin.member-report'
+import { Route as AdminNoticeRouteImport } from './routes/admin.notice'
+import { Route as AdminPasswordRouteImport } from './routes/admin.password'
+import { Route as AdminPlanRouteImport } from './routes/admin.plan'
+import { Route as AdminRankAchieversRouteImport } from './routes/admin.rank-achievers'
+import { Route as AdminRankRewardRouteImport } from './routes/admin.rank-reward'
+import { Route as AdminSalesReportRouteImport } from './routes/admin.sales-report'
+import { Route as AdminScrollNewsRouteImport } from './routes/admin.scroll-news'
+import { Route as AdminSiteConfigRouteImport } from './routes/admin.site-config'
+import { Route as AdminStatementsRouteImport } from './routes/admin.statements'
+import { Route as AdminWithdrawalsRouteImport } from './routes/admin.withdrawals'
+import { Route as AdminLoginRouteImport } from './routes/admin_.login'
+import { Route as MemberIndexRouteImport } from './routes/member.index'
+import { Route as MemberActivationRouteImport } from './routes/member.activation'
+import { Route as MemberChangePasswordRouteImport } from './routes/member.change-password'
+import { Route as MemberCommissionRouteImport } from './routes/member.commission'
+import { Route as MemberNoticeRouteImport } from './routes/member.notice'
+import { Route as MemberProfileRouteImport } from './routes/member.profile'
+import { Route as MemberSponsorsRouteImport } from './routes/member.sponsors'
+import { Route as MemberStatisticsRouteImport } from './routes/member.statistics'
+import { Route as MemberTreeRouteImport } from './routes/member.tree'
+import { Route as MemberWithdrawalsRouteImport } from './routes/member.withdrawals'
+import { Route as MemberWithdrawalsReportRouteImport } from './routes/member.withdrawals-report'
+import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AudioGalleryRoute = AudioGalleryRouteImport.update({
+  id: '/audio-gallery',
+  path: '/audio-gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AwardsRoute = AwardsRouteImport.update({
+  id: '/awards',
+  path: '/awards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessCenterRoute = BusinessCenterRouteImport.update({
+  id: '/business-center',
+  path: '/business-center',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessCollaborationRoute = BusinessCollaborationRouteImport.update({
+  id: '/business-collaboration',
+  path: '/business-collaboration',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessOpportunityRoute = BusinessOpportunityRouteImport.update({
+  id: '/business-opportunity',
+  path: '/business-opportunity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CrystalCellRoute = CrystalCellRouteImport.update({
+  id: '/crystal-cell',
+  path: '/crystal-cell',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DoubleStemcellRoute = DoubleStemcellRouteImport.update({
+  id: '/double-stemcell',
+  path: '/double-stemcell',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqGeneralRoute = FaqGeneralRouteImport.update({
+  id: '/faq-general',
+  path: '/faq-general',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqProductRoute = FaqProductRouteImport.update({
+  id: '/faq-product',
+  path: '/faq-product',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqReturnGoodsRoute = FaqReturnGoodsRouteImport.update({
+  id: '/faq-return-goods',
+  path: '/faq-return-goods',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FounderRoute = FounderRouteImport.update({
+  id: '/founder',
+  path: '/founder',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HalalCertificatesRoute = HalalCertificatesRouteImport.update({
+  id: '/halal-certificates',
+  path: '/halal-certificates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JoinRoute = JoinRouteImport.update({
+  id: '/join',
+  path: '/join',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JoinUsRoute = JoinUsRouteImport.update({
+  id: '/join-us',
+  path: '/join-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LatestEventRoute = LatestEventRouteImport.update({
+  id: '/latest-event',
+  path: '/latest-event',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MemberRoute = MemberRouteImport.update({
+  id: '/member',
+  path: '/member',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MilestonesRoute = MilestonesRouteImport.update({
+  id: '/milestones',
+  path: '/milestones',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsEventsRoute = NewsEventsRouteImport.update({
+  id: '/news-events',
+  path: '/news-events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PhotoGalleryRoute = PhotoGalleryRouteImport.update({
+  id: '/photo-gallery',
+  path: '/photo-gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductVideosRoute = ProductVideosRouteImport.update({
+  id: '/product-videos',
+  path: '/product-videos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScientistsRoute = ScientistsRouteImport.update({
+  id: '/scientists',
+  path: '/scientists',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SeniorManagementRoute = SeniorManagementRouteImport.update({
+  id: '/senior-management',
+  path: '/senior-management',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TripleStemcellH2oRoute = TripleStemcellH2oRouteImport.update({
+  id: '/triple-stemcell-h2o',
+  path: '/triple-stemcell-h2o',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VideoGalleryRoute = VideoGalleryRouteImport.update({
+  id: '/video-gallery',
+  path: '/video-gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminActivationsRoute = AdminActivationsRouteImport.update({
+  id: '/activations',
+  path: '/activations',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminBalanceAddRoute = AdminBalanceAddRouteImport.update({
+  id: '/balance-add',
+  path: '/balance-add',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminJoiningReportRoute = AdminJoiningReportRouteImport.update({
+  id: '/joining-report',
+  path: '/joining-report',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLedgerRoute = AdminLedgerRouteImport.update({
+  id: '/ledger',
+  path: '/ledger',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMatchingEventsRoute = AdminMatchingEventsRouteImport.update({
+  id: '/matching-events',
+  path: '/matching-events',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMemberListRoute = AdminMemberListRouteImport.update({
+  id: '/member-list',
+  path: '/member-list',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMemberReportRoute = AdminMemberReportRouteImport.update({
+  id: '/member-report',
+  path: '/member-report',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminNoticeRoute = AdminNoticeRouteImport.update({
+  id: '/notice',
+  path: '/notice',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPasswordRoute = AdminPasswordRouteImport.update({
+  id: '/password',
+  path: '/password',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPlanRoute = AdminPlanRouteImport.update({
+  id: '/plan',
+  path: '/plan',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminRankAchieversRoute = AdminRankAchieversRouteImport.update({
+  id: '/rank-achievers',
+  path: '/rank-achievers',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminRankRewardRoute = AdminRankRewardRouteImport.update({
+  id: '/rank-reward',
+  path: '/rank-reward',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSalesReportRoute = AdminSalesReportRouteImport.update({
+  id: '/sales-report',
+  path: '/sales-report',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminScrollNewsRoute = AdminScrollNewsRouteImport.update({
+  id: '/scroll-news',
+  path: '/scroll-news',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSiteConfigRoute = AdminSiteConfigRouteImport.update({
+  id: '/site-config',
+  path: '/site-config',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminStatementsRoute = AdminStatementsRouteImport.update({
+  id: '/statements',
+  path: '/statements',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminWithdrawalsRoute = AdminWithdrawalsRouteImport.update({
+  id: '/withdrawals',
+  path: '/withdrawals',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin_/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MemberIndexRoute = MemberIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MemberRoute,
+} as any)
+const MemberActivationRoute = MemberActivationRouteImport.update({
+  id: '/activation',
+  path: '/activation',
+  getParentRoute: () => MemberRoute,
+} as any)
+const MemberChangePasswordRoute = MemberChangePasswordRouteImport.update({
+  id: '/change-password',
+  path: '/change-password',
+  getParentRoute: () => MemberRoute,
+} as any)
+const MemberCommissionRoute = MemberCommissionRouteImport.update({
+  id: '/commission',
+  path: '/commission',
+  getParentRoute: () => MemberRoute,
+} as any)
+const MemberNoticeRoute = MemberNoticeRouteImport.update({
+  id: '/notice',
+  path: '/notice',
+  getParentRoute: () => MemberRoute,
+} as any)
+const MemberProfileRoute = MemberProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => MemberRoute,
+} as any)
+const MemberSponsorsRoute = MemberSponsorsRouteImport.update({
+  id: '/sponsors',
+  path: '/sponsors',
+  getParentRoute: () => MemberRoute,
+} as any)
+const MemberStatisticsRoute = MemberStatisticsRouteImport.update({
+  id: '/statistics',
+  path: '/statistics',
+  getParentRoute: () => MemberRoute,
+} as any)
+const MemberTreeRoute = MemberTreeRouteImport.update({
+  id: '/tree',
+  path: '/tree',
+  getParentRoute: () => MemberRoute,
+} as any)
+const MemberWithdrawalsRoute = MemberWithdrawalsRouteImport.update({
+  id: '/withdrawals',
+  path: '/withdrawals',
+  getParentRoute: () => MemberRoute,
+} as any)
+const MemberWithdrawalsReportRoute = MemberWithdrawalsReportRouteImport.update({
+  id: '/withdrawals-report',
+  path: '/withdrawals-report',
+  getParentRoute: () => MemberRoute,
+} as any)
+const ServicesSlugRoute = ServicesSlugRouteImport.update({
+  id: '/services/$slug',
+  path: '/services/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/audio-gallery': typeof AudioGalleryRoute
+  '/awards': typeof AwardsRoute
+  '/business-center': typeof BusinessCenterRoute
+  '/business-collaboration': typeof BusinessCollaborationRoute
+  '/business-opportunity': typeof BusinessOpportunityRoute
+  '/contact': typeof ContactRoute
+  '/crystal-cell': typeof CrystalCellRoute
+  '/double-stemcell': typeof DoubleStemcellRoute
+  '/faq-general': typeof FaqGeneralRoute
+  '/faq-product': typeof FaqProductRoute
+  '/faq-return-goods': typeof FaqReturnGoodsRoute
+  '/founder': typeof FounderRoute
+  '/halal-certificates': typeof HalalCertificatesRoute
+  '/join': typeof JoinRoute
+  '/join-us': typeof JoinUsRoute
+  '/latest-event': typeof LatestEventRoute
+  '/login': typeof LoginRoute
+  '/member': typeof MemberRouteWithChildren
+  '/milestones': typeof MilestonesRoute
+  '/news-events': typeof NewsEventsRoute
+  '/photo-gallery': typeof PhotoGalleryRoute
+  '/product-videos': typeof ProductVideosRoute
+  '/scientists': typeof ScientistsRoute
+  '/senior-management': typeof SeniorManagementRoute
+  '/triple-stemcell-h2o': typeof TripleStemcellH2oRoute
+  '/video-gallery': typeof VideoGalleryRoute
+  '/admin/activations': typeof AdminActivationsRoute
+  '/admin/balance-add': typeof AdminBalanceAddRoute
+  '/admin/joining-report': typeof AdminJoiningReportRoute
+  '/admin/ledger': typeof AdminLedgerRoute
+  '/admin/matching-events': typeof AdminMatchingEventsRoute
+  '/admin/member-list': typeof AdminMemberListRoute
+  '/admin/member-report': typeof AdminMemberReportRoute
+  '/admin/notice': typeof AdminNoticeRoute
+  '/admin/password': typeof AdminPasswordRoute
+  '/admin/plan': typeof AdminPlanRoute
+  '/admin/rank-achievers': typeof AdminRankAchieversRoute
+  '/admin/rank-reward': typeof AdminRankRewardRoute
+  '/admin/sales-report': typeof AdminSalesReportRoute
+  '/admin/scroll-news': typeof AdminScrollNewsRoute
+  '/admin/site-config': typeof AdminSiteConfigRoute
+  '/admin/statements': typeof AdminStatementsRoute
+  '/admin/withdrawals': typeof AdminWithdrawalsRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/member/activation': typeof MemberActivationRoute
+  '/member/change-password': typeof MemberChangePasswordRoute
+  '/member/commission': typeof MemberCommissionRoute
+  '/member/notice': typeof MemberNoticeRoute
+  '/member/profile': typeof MemberProfileRoute
+  '/member/sponsors': typeof MemberSponsorsRoute
+  '/member/statistics': typeof MemberStatisticsRoute
+  '/member/tree': typeof MemberTreeRoute
+  '/member/withdrawals': typeof MemberWithdrawalsRoute
+  '/member/withdrawals-report': typeof MemberWithdrawalsReportRoute
+  '/services/$slug': typeof ServicesSlugRoute
+  '/admin/': typeof AdminIndexRoute
+  '/member/': typeof MemberIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/audio-gallery': typeof AudioGalleryRoute
+  '/awards': typeof AwardsRoute
+  '/business-center': typeof BusinessCenterRoute
+  '/business-collaboration': typeof BusinessCollaborationRoute
+  '/business-opportunity': typeof BusinessOpportunityRoute
+  '/contact': typeof ContactRoute
+  '/crystal-cell': typeof CrystalCellRoute
+  '/double-stemcell': typeof DoubleStemcellRoute
+  '/faq-general': typeof FaqGeneralRoute
+  '/faq-product': typeof FaqProductRoute
+  '/faq-return-goods': typeof FaqReturnGoodsRoute
+  '/founder': typeof FounderRoute
+  '/halal-certificates': typeof HalalCertificatesRoute
+  '/join': typeof JoinRoute
+  '/join-us': typeof JoinUsRoute
+  '/latest-event': typeof LatestEventRoute
+  '/login': typeof LoginRoute
+  '/milestones': typeof MilestonesRoute
+  '/news-events': typeof NewsEventsRoute
+  '/photo-gallery': typeof PhotoGalleryRoute
+  '/product-videos': typeof ProductVideosRoute
+  '/scientists': typeof ScientistsRoute
+  '/senior-management': typeof SeniorManagementRoute
+  '/triple-stemcell-h2o': typeof TripleStemcellH2oRoute
+  '/video-gallery': typeof VideoGalleryRoute
+  '/admin/activations': typeof AdminActivationsRoute
+  '/admin/balance-add': typeof AdminBalanceAddRoute
+  '/admin/joining-report': typeof AdminJoiningReportRoute
+  '/admin/ledger': typeof AdminLedgerRoute
+  '/admin/matching-events': typeof AdminMatchingEventsRoute
+  '/admin/member-list': typeof AdminMemberListRoute
+  '/admin/member-report': typeof AdminMemberReportRoute
+  '/admin/notice': typeof AdminNoticeRoute
+  '/admin/password': typeof AdminPasswordRoute
+  '/admin/plan': typeof AdminPlanRoute
+  '/admin/rank-achievers': typeof AdminRankAchieversRoute
+  '/admin/rank-reward': typeof AdminRankRewardRoute
+  '/admin/sales-report': typeof AdminSalesReportRoute
+  '/admin/scroll-news': typeof AdminScrollNewsRoute
+  '/admin/site-config': typeof AdminSiteConfigRoute
+  '/admin/statements': typeof AdminStatementsRoute
+  '/admin/withdrawals': typeof AdminWithdrawalsRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/member/activation': typeof MemberActivationRoute
+  '/member/change-password': typeof MemberChangePasswordRoute
+  '/member/commission': typeof MemberCommissionRoute
+  '/member/notice': typeof MemberNoticeRoute
+  '/member/profile': typeof MemberProfileRoute
+  '/member/sponsors': typeof MemberSponsorsRoute
+  '/member/statistics': typeof MemberStatisticsRoute
+  '/member/tree': typeof MemberTreeRoute
+  '/member/withdrawals': typeof MemberWithdrawalsRoute
+  '/member/withdrawals-report': typeof MemberWithdrawalsReportRoute
+  '/services/$slug': typeof ServicesSlugRoute
+  '/admin': typeof AdminIndexRoute
+  '/member': typeof MemberIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/audio-gallery': typeof AudioGalleryRoute
+  '/awards': typeof AwardsRoute
+  '/business-center': typeof BusinessCenterRoute
+  '/business-collaboration': typeof BusinessCollaborationRoute
+  '/business-opportunity': typeof BusinessOpportunityRoute
+  '/contact': typeof ContactRoute
+  '/crystal-cell': typeof CrystalCellRoute
+  '/double-stemcell': typeof DoubleStemcellRoute
+  '/faq-general': typeof FaqGeneralRoute
+  '/faq-product': typeof FaqProductRoute
+  '/faq-return-goods': typeof FaqReturnGoodsRoute
+  '/founder': typeof FounderRoute
+  '/halal-certificates': typeof HalalCertificatesRoute
+  '/join': typeof JoinRoute
+  '/join-us': typeof JoinUsRoute
+  '/latest-event': typeof LatestEventRoute
+  '/login': typeof LoginRoute
+  '/member': typeof MemberRouteWithChildren
+  '/milestones': typeof MilestonesRoute
+  '/news-events': typeof NewsEventsRoute
+  '/photo-gallery': typeof PhotoGalleryRoute
+  '/product-videos': typeof ProductVideosRoute
+  '/scientists': typeof ScientistsRoute
+  '/senior-management': typeof SeniorManagementRoute
+  '/triple-stemcell-h2o': typeof TripleStemcellH2oRoute
+  '/video-gallery': typeof VideoGalleryRoute
+  '/admin/activations': typeof AdminActivationsRoute
+  '/admin/balance-add': typeof AdminBalanceAddRoute
+  '/admin/joining-report': typeof AdminJoiningReportRoute
+  '/admin/ledger': typeof AdminLedgerRoute
+  '/admin/matching-events': typeof AdminMatchingEventsRoute
+  '/admin/member-list': typeof AdminMemberListRoute
+  '/admin/member-report': typeof AdminMemberReportRoute
+  '/admin/notice': typeof AdminNoticeRoute
+  '/admin/password': typeof AdminPasswordRoute
+  '/admin/plan': typeof AdminPlanRoute
+  '/admin/rank-achievers': typeof AdminRankAchieversRoute
+  '/admin/rank-reward': typeof AdminRankRewardRoute
+  '/admin/sales-report': typeof AdminSalesReportRoute
+  '/admin/scroll-news': typeof AdminScrollNewsRoute
+  '/admin/site-config': typeof AdminSiteConfigRoute
+  '/admin/statements': typeof AdminStatementsRoute
+  '/admin/withdrawals': typeof AdminWithdrawalsRoute
+  '/admin_/login': typeof AdminLoginRoute
+  '/member/activation': typeof MemberActivationRoute
+  '/member/change-password': typeof MemberChangePasswordRoute
+  '/member/commission': typeof MemberCommissionRoute
+  '/member/notice': typeof MemberNoticeRoute
+  '/member/profile': typeof MemberProfileRoute
+  '/member/sponsors': typeof MemberSponsorsRoute
+  '/member/statistics': typeof MemberStatisticsRoute
+  '/member/tree': typeof MemberTreeRoute
+  '/member/withdrawals': typeof MemberWithdrawalsRoute
+  '/member/withdrawals-report': typeof MemberWithdrawalsReportRoute
+  '/services/$slug': typeof ServicesSlugRoute
+  '/admin/': typeof AdminIndexRoute
+  '/member/': typeof MemberIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/audio-gallery'
+    | '/awards'
+    | '/business-center'
+    | '/business-collaboration'
+    | '/business-opportunity'
+    | '/contact'
+    | '/crystal-cell'
+    | '/double-stemcell'
+    | '/faq-general'
+    | '/faq-product'
+    | '/faq-return-goods'
+    | '/founder'
+    | '/halal-certificates'
+    | '/join'
+    | '/join-us'
+    | '/latest-event'
+    | '/login'
+    | '/member'
+    | '/milestones'
+    | '/news-events'
+    | '/photo-gallery'
+    | '/product-videos'
+    | '/scientists'
+    | '/senior-management'
+    | '/triple-stemcell-h2o'
+    | '/video-gallery'
+    | '/admin/activations'
+    | '/admin/balance-add'
+    | '/admin/joining-report'
+    | '/admin/ledger'
+    | '/admin/matching-events'
+    | '/admin/member-list'
+    | '/admin/member-report'
+    | '/admin/notice'
+    | '/admin/password'
+    | '/admin/plan'
+    | '/admin/rank-achievers'
+    | '/admin/rank-reward'
+    | '/admin/sales-report'
+    | '/admin/scroll-news'
+    | '/admin/site-config'
+    | '/admin/statements'
+    | '/admin/withdrawals'
+    | '/admin/login'
+    | '/member/activation'
+    | '/member/change-password'
+    | '/member/commission'
+    | '/member/notice'
+    | '/member/profile'
+    | '/member/sponsors'
+    | '/member/statistics'
+    | '/member/tree'
+    | '/member/withdrawals'
+    | '/member/withdrawals-report'
+    | '/services/$slug'
+    | '/admin/'
+    | '/member/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/audio-gallery'
+    | '/awards'
+    | '/business-center'
+    | '/business-collaboration'
+    | '/business-opportunity'
+    | '/contact'
+    | '/crystal-cell'
+    | '/double-stemcell'
+    | '/faq-general'
+    | '/faq-product'
+    | '/faq-return-goods'
+    | '/founder'
+    | '/halal-certificates'
+    | '/join'
+    | '/join-us'
+    | '/latest-event'
+    | '/login'
+    | '/milestones'
+    | '/news-events'
+    | '/photo-gallery'
+    | '/product-videos'
+    | '/scientists'
+    | '/senior-management'
+    | '/triple-stemcell-h2o'
+    | '/video-gallery'
+    | '/admin/activations'
+    | '/admin/balance-add'
+    | '/admin/joining-report'
+    | '/admin/ledger'
+    | '/admin/matching-events'
+    | '/admin/member-list'
+    | '/admin/member-report'
+    | '/admin/notice'
+    | '/admin/password'
+    | '/admin/plan'
+    | '/admin/rank-achievers'
+    | '/admin/rank-reward'
+    | '/admin/sales-report'
+    | '/admin/scroll-news'
+    | '/admin/site-config'
+    | '/admin/statements'
+    | '/admin/withdrawals'
+    | '/admin/login'
+    | '/member/activation'
+    | '/member/change-password'
+    | '/member/commission'
+    | '/member/notice'
+    | '/member/profile'
+    | '/member/sponsors'
+    | '/member/statistics'
+    | '/member/tree'
+    | '/member/withdrawals'
+    | '/member/withdrawals-report'
+    | '/services/$slug'
+    | '/admin'
+    | '/member'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/audio-gallery'
+    | '/awards'
+    | '/business-center'
+    | '/business-collaboration'
+    | '/business-opportunity'
+    | '/contact'
+    | '/crystal-cell'
+    | '/double-stemcell'
+    | '/faq-general'
+    | '/faq-product'
+    | '/faq-return-goods'
+    | '/founder'
+    | '/halal-certificates'
+    | '/join'
+    | '/join-us'
+    | '/latest-event'
+    | '/login'
+    | '/member'
+    | '/milestones'
+    | '/news-events'
+    | '/photo-gallery'
+    | '/product-videos'
+    | '/scientists'
+    | '/senior-management'
+    | '/triple-stemcell-h2o'
+    | '/video-gallery'
+    | '/admin/activations'
+    | '/admin/balance-add'
+    | '/admin/joining-report'
+    | '/admin/ledger'
+    | '/admin/matching-events'
+    | '/admin/member-list'
+    | '/admin/member-report'
+    | '/admin/notice'
+    | '/admin/password'
+    | '/admin/plan'
+    | '/admin/rank-achievers'
+    | '/admin/rank-reward'
+    | '/admin/sales-report'
+    | '/admin/scroll-news'
+    | '/admin/site-config'
+    | '/admin/statements'
+    | '/admin/withdrawals'
+    | '/admin_/login'
+    | '/member/activation'
+    | '/member/change-password'
+    | '/member/commission'
+    | '/member/notice'
+    | '/member/profile'
+    | '/member/sponsors'
+    | '/member/statistics'
+    | '/member/tree'
+    | '/member/withdrawals'
+    | '/member/withdrawals-report'
+    | '/services/$slug'
+    | '/admin/'
+    | '/member/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRouteWithChildren
+  AudioGalleryRoute: typeof AudioGalleryRoute
+  AwardsRoute: typeof AwardsRoute
+  BusinessCenterRoute: typeof BusinessCenterRoute
+  BusinessCollaborationRoute: typeof BusinessCollaborationRoute
+  BusinessOpportunityRoute: typeof BusinessOpportunityRoute
+  ContactRoute: typeof ContactRoute
+  CrystalCellRoute: typeof CrystalCellRoute
+  DoubleStemcellRoute: typeof DoubleStemcellRoute
+  FaqGeneralRoute: typeof FaqGeneralRoute
+  FaqProductRoute: typeof FaqProductRoute
+  FaqReturnGoodsRoute: typeof FaqReturnGoodsRoute
+  FounderRoute: typeof FounderRoute
+  HalalCertificatesRoute: typeof HalalCertificatesRoute
+  JoinRoute: typeof JoinRoute
+  JoinUsRoute: typeof JoinUsRoute
+  LatestEventRoute: typeof LatestEventRoute
+  LoginRoute: typeof LoginRoute
+  MemberRoute: typeof MemberRouteWithChildren
+  MilestonesRoute: typeof MilestonesRoute
+  NewsEventsRoute: typeof NewsEventsRoute
+  PhotoGalleryRoute: typeof PhotoGalleryRoute
+  ProductVideosRoute: typeof ProductVideosRoute
+  ScientistsRoute: typeof ScientistsRoute
+  SeniorManagementRoute: typeof SeniorManagementRoute
+  TripleStemcellH2oRoute: typeof TripleStemcellH2oRoute
+  VideoGalleryRoute: typeof VideoGalleryRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  ServicesSlugRoute: typeof ServicesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +786,529 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/audio-gallery': {
+      id: '/audio-gallery'
+      path: '/audio-gallery'
+      fullPath: '/audio-gallery'
+      preLoaderRoute: typeof AudioGalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/awards': {
+      id: '/awards'
+      path: '/awards'
+      fullPath: '/awards'
+      preLoaderRoute: typeof AwardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business-center': {
+      id: '/business-center'
+      path: '/business-center'
+      fullPath: '/business-center'
+      preLoaderRoute: typeof BusinessCenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business-collaboration': {
+      id: '/business-collaboration'
+      path: '/business-collaboration'
+      fullPath: '/business-collaboration'
+      preLoaderRoute: typeof BusinessCollaborationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business-opportunity': {
+      id: '/business-opportunity'
+      path: '/business-opportunity'
+      fullPath: '/business-opportunity'
+      preLoaderRoute: typeof BusinessOpportunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crystal-cell': {
+      id: '/crystal-cell'
+      path: '/crystal-cell'
+      fullPath: '/crystal-cell'
+      preLoaderRoute: typeof CrystalCellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/double-stemcell': {
+      id: '/double-stemcell'
+      path: '/double-stemcell'
+      fullPath: '/double-stemcell'
+      preLoaderRoute: typeof DoubleStemcellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq-general': {
+      id: '/faq-general'
+      path: '/faq-general'
+      fullPath: '/faq-general'
+      preLoaderRoute: typeof FaqGeneralRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq-product': {
+      id: '/faq-product'
+      path: '/faq-product'
+      fullPath: '/faq-product'
+      preLoaderRoute: typeof FaqProductRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq-return-goods': {
+      id: '/faq-return-goods'
+      path: '/faq-return-goods'
+      fullPath: '/faq-return-goods'
+      preLoaderRoute: typeof FaqReturnGoodsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/founder': {
+      id: '/founder'
+      path: '/founder'
+      fullPath: '/founder'
+      preLoaderRoute: typeof FounderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/halal-certificates': {
+      id: '/halal-certificates'
+      path: '/halal-certificates'
+      fullPath: '/halal-certificates'
+      preLoaderRoute: typeof HalalCertificatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/join': {
+      id: '/join'
+      path: '/join'
+      fullPath: '/join'
+      preLoaderRoute: typeof JoinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/join-us': {
+      id: '/join-us'
+      path: '/join-us'
+      fullPath: '/join-us'
+      preLoaderRoute: typeof JoinUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/latest-event': {
+      id: '/latest-event'
+      path: '/latest-event'
+      fullPath: '/latest-event'
+      preLoaderRoute: typeof LatestEventRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/member': {
+      id: '/member'
+      path: '/member'
+      fullPath: '/member'
+      preLoaderRoute: typeof MemberRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/milestones': {
+      id: '/milestones'
+      path: '/milestones'
+      fullPath: '/milestones'
+      preLoaderRoute: typeof MilestonesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news-events': {
+      id: '/news-events'
+      path: '/news-events'
+      fullPath: '/news-events'
+      preLoaderRoute: typeof NewsEventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/photo-gallery': {
+      id: '/photo-gallery'
+      path: '/photo-gallery'
+      fullPath: '/photo-gallery'
+      preLoaderRoute: typeof PhotoGalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/product-videos': {
+      id: '/product-videos'
+      path: '/product-videos'
+      fullPath: '/product-videos'
+      preLoaderRoute: typeof ProductVideosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scientists': {
+      id: '/scientists'
+      path: '/scientists'
+      fullPath: '/scientists'
+      preLoaderRoute: typeof ScientistsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/senior-management': {
+      id: '/senior-management'
+      path: '/senior-management'
+      fullPath: '/senior-management'
+      preLoaderRoute: typeof SeniorManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/triple-stemcell-h2o': {
+      id: '/triple-stemcell-h2o'
+      path: '/triple-stemcell-h2o'
+      fullPath: '/triple-stemcell-h2o'
+      preLoaderRoute: typeof TripleStemcellH2oRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/video-gallery': {
+      id: '/video-gallery'
+      path: '/video-gallery'
+      fullPath: '/video-gallery'
+      preLoaderRoute: typeof VideoGalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/activations': {
+      id: '/admin/activations'
+      path: '/activations'
+      fullPath: '/admin/activations'
+      preLoaderRoute: typeof AdminActivationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/balance-add': {
+      id: '/admin/balance-add'
+      path: '/balance-add'
+      fullPath: '/admin/balance-add'
+      preLoaderRoute: typeof AdminBalanceAddRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/joining-report': {
+      id: '/admin/joining-report'
+      path: '/joining-report'
+      fullPath: '/admin/joining-report'
+      preLoaderRoute: typeof AdminJoiningReportRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/ledger': {
+      id: '/admin/ledger'
+      path: '/ledger'
+      fullPath: '/admin/ledger'
+      preLoaderRoute: typeof AdminLedgerRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/matching-events': {
+      id: '/admin/matching-events'
+      path: '/matching-events'
+      fullPath: '/admin/matching-events'
+      preLoaderRoute: typeof AdminMatchingEventsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/member-list': {
+      id: '/admin/member-list'
+      path: '/member-list'
+      fullPath: '/admin/member-list'
+      preLoaderRoute: typeof AdminMemberListRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/member-report': {
+      id: '/admin/member-report'
+      path: '/member-report'
+      fullPath: '/admin/member-report'
+      preLoaderRoute: typeof AdminMemberReportRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/notice': {
+      id: '/admin/notice'
+      path: '/notice'
+      fullPath: '/admin/notice'
+      preLoaderRoute: typeof AdminNoticeRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/password': {
+      id: '/admin/password'
+      path: '/password'
+      fullPath: '/admin/password'
+      preLoaderRoute: typeof AdminPasswordRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/plan': {
+      id: '/admin/plan'
+      path: '/plan'
+      fullPath: '/admin/plan'
+      preLoaderRoute: typeof AdminPlanRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/rank-achievers': {
+      id: '/admin/rank-achievers'
+      path: '/rank-achievers'
+      fullPath: '/admin/rank-achievers'
+      preLoaderRoute: typeof AdminRankAchieversRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/rank-reward': {
+      id: '/admin/rank-reward'
+      path: '/rank-reward'
+      fullPath: '/admin/rank-reward'
+      preLoaderRoute: typeof AdminRankRewardRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/sales-report': {
+      id: '/admin/sales-report'
+      path: '/sales-report'
+      fullPath: '/admin/sales-report'
+      preLoaderRoute: typeof AdminSalesReportRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/scroll-news': {
+      id: '/admin/scroll-news'
+      path: '/scroll-news'
+      fullPath: '/admin/scroll-news'
+      preLoaderRoute: typeof AdminScrollNewsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/site-config': {
+      id: '/admin/site-config'
+      path: '/site-config'
+      fullPath: '/admin/site-config'
+      preLoaderRoute: typeof AdminSiteConfigRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/statements': {
+      id: '/admin/statements'
+      path: '/statements'
+      fullPath: '/admin/statements'
+      preLoaderRoute: typeof AdminStatementsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/withdrawals': {
+      id: '/admin/withdrawals'
+      path: '/withdrawals'
+      fullPath: '/admin/withdrawals'
+      preLoaderRoute: typeof AdminWithdrawalsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin_/login': {
+      id: '/admin_/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/member/': {
+      id: '/member/'
+      path: '/'
+      fullPath: '/member/'
+      preLoaderRoute: typeof MemberIndexRouteImport
+      parentRoute: typeof MemberRoute
+    }
+    '/member/activation': {
+      id: '/member/activation'
+      path: '/activation'
+      fullPath: '/member/activation'
+      preLoaderRoute: typeof MemberActivationRouteImport
+      parentRoute: typeof MemberRoute
+    }
+    '/member/change-password': {
+      id: '/member/change-password'
+      path: '/change-password'
+      fullPath: '/member/change-password'
+      preLoaderRoute: typeof MemberChangePasswordRouteImport
+      parentRoute: typeof MemberRoute
+    }
+    '/member/commission': {
+      id: '/member/commission'
+      path: '/commission'
+      fullPath: '/member/commission'
+      preLoaderRoute: typeof MemberCommissionRouteImport
+      parentRoute: typeof MemberRoute
+    }
+    '/member/notice': {
+      id: '/member/notice'
+      path: '/notice'
+      fullPath: '/member/notice'
+      preLoaderRoute: typeof MemberNoticeRouteImport
+      parentRoute: typeof MemberRoute
+    }
+    '/member/profile': {
+      id: '/member/profile'
+      path: '/profile'
+      fullPath: '/member/profile'
+      preLoaderRoute: typeof MemberProfileRouteImport
+      parentRoute: typeof MemberRoute
+    }
+    '/member/sponsors': {
+      id: '/member/sponsors'
+      path: '/sponsors'
+      fullPath: '/member/sponsors'
+      preLoaderRoute: typeof MemberSponsorsRouteImport
+      parentRoute: typeof MemberRoute
+    }
+    '/member/statistics': {
+      id: '/member/statistics'
+      path: '/statistics'
+      fullPath: '/member/statistics'
+      preLoaderRoute: typeof MemberStatisticsRouteImport
+      parentRoute: typeof MemberRoute
+    }
+    '/member/tree': {
+      id: '/member/tree'
+      path: '/tree'
+      fullPath: '/member/tree'
+      preLoaderRoute: typeof MemberTreeRouteImport
+      parentRoute: typeof MemberRoute
+    }
+    '/member/withdrawals': {
+      id: '/member/withdrawals'
+      path: '/withdrawals'
+      fullPath: '/member/withdrawals'
+      preLoaderRoute: typeof MemberWithdrawalsRouteImport
+      parentRoute: typeof MemberRoute
+    }
+    '/member/withdrawals-report': {
+      id: '/member/withdrawals-report'
+      path: '/withdrawals-report'
+      fullPath: '/member/withdrawals-report'
+      preLoaderRoute: typeof MemberWithdrawalsReportRouteImport
+      parentRoute: typeof MemberRoute
+    }
+    '/services/$slug': {
+      id: '/services/$slug'
+      path: '/services/$slug'
+      fullPath: '/services/$slug'
+      preLoaderRoute: typeof ServicesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface AdminRouteChildren {
+  AdminActivationsRoute: typeof AdminActivationsRoute
+  AdminBalanceAddRoute: typeof AdminBalanceAddRoute
+  AdminJoiningReportRoute: typeof AdminJoiningReportRoute
+  AdminLedgerRoute: typeof AdminLedgerRoute
+  AdminMatchingEventsRoute: typeof AdminMatchingEventsRoute
+  AdminMemberListRoute: typeof AdminMemberListRoute
+  AdminMemberReportRoute: typeof AdminMemberReportRoute
+  AdminNoticeRoute: typeof AdminNoticeRoute
+  AdminPasswordRoute: typeof AdminPasswordRoute
+  AdminPlanRoute: typeof AdminPlanRoute
+  AdminRankAchieversRoute: typeof AdminRankAchieversRoute
+  AdminRankRewardRoute: typeof AdminRankRewardRoute
+  AdminSalesReportRoute: typeof AdminSalesReportRoute
+  AdminScrollNewsRoute: typeof AdminScrollNewsRoute
+  AdminSiteConfigRoute: typeof AdminSiteConfigRoute
+  AdminStatementsRoute: typeof AdminStatementsRoute
+  AdminWithdrawalsRoute: typeof AdminWithdrawalsRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminActivationsRoute: AdminActivationsRoute,
+  AdminBalanceAddRoute: AdminBalanceAddRoute,
+  AdminJoiningReportRoute: AdminJoiningReportRoute,
+  AdminLedgerRoute: AdminLedgerRoute,
+  AdminMatchingEventsRoute: AdminMatchingEventsRoute,
+  AdminMemberListRoute: AdminMemberListRoute,
+  AdminMemberReportRoute: AdminMemberReportRoute,
+  AdminNoticeRoute: AdminNoticeRoute,
+  AdminPasswordRoute: AdminPasswordRoute,
+  AdminPlanRoute: AdminPlanRoute,
+  AdminRankAchieversRoute: AdminRankAchieversRoute,
+  AdminRankRewardRoute: AdminRankRewardRoute,
+  AdminSalesReportRoute: AdminSalesReportRoute,
+  AdminScrollNewsRoute: AdminScrollNewsRoute,
+  AdminSiteConfigRoute: AdminSiteConfigRoute,
+  AdminStatementsRoute: AdminStatementsRoute,
+  AdminWithdrawalsRoute: AdminWithdrawalsRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
+interface MemberRouteChildren {
+  MemberActivationRoute: typeof MemberActivationRoute
+  MemberChangePasswordRoute: typeof MemberChangePasswordRoute
+  MemberCommissionRoute: typeof MemberCommissionRoute
+  MemberNoticeRoute: typeof MemberNoticeRoute
+  MemberProfileRoute: typeof MemberProfileRoute
+  MemberSponsorsRoute: typeof MemberSponsorsRoute
+  MemberStatisticsRoute: typeof MemberStatisticsRoute
+  MemberTreeRoute: typeof MemberTreeRoute
+  MemberWithdrawalsRoute: typeof MemberWithdrawalsRoute
+  MemberWithdrawalsReportRoute: typeof MemberWithdrawalsReportRoute
+  MemberIndexRoute: typeof MemberIndexRoute
+}
+
+const MemberRouteChildren: MemberRouteChildren = {
+  MemberActivationRoute: MemberActivationRoute,
+  MemberChangePasswordRoute: MemberChangePasswordRoute,
+  MemberCommissionRoute: MemberCommissionRoute,
+  MemberNoticeRoute: MemberNoticeRoute,
+  MemberProfileRoute: MemberProfileRoute,
+  MemberSponsorsRoute: MemberSponsorsRoute,
+  MemberStatisticsRoute: MemberStatisticsRoute,
+  MemberTreeRoute: MemberTreeRoute,
+  MemberWithdrawalsRoute: MemberWithdrawalsRoute,
+  MemberWithdrawalsReportRoute: MemberWithdrawalsReportRoute,
+  MemberIndexRoute: MemberIndexRoute,
+}
+
+const MemberRouteWithChildren =
+  MemberRoute._addFileChildren(MemberRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AdminRoute: AdminRouteWithChildren,
+  AudioGalleryRoute: AudioGalleryRoute,
+  AwardsRoute: AwardsRoute,
+  BusinessCenterRoute: BusinessCenterRoute,
+  BusinessCollaborationRoute: BusinessCollaborationRoute,
+  BusinessOpportunityRoute: BusinessOpportunityRoute,
+  ContactRoute: ContactRoute,
+  CrystalCellRoute: CrystalCellRoute,
+  DoubleStemcellRoute: DoubleStemcellRoute,
+  FaqGeneralRoute: FaqGeneralRoute,
+  FaqProductRoute: FaqProductRoute,
+  FaqReturnGoodsRoute: FaqReturnGoodsRoute,
+  FounderRoute: FounderRoute,
+  HalalCertificatesRoute: HalalCertificatesRoute,
+  JoinRoute: JoinRoute,
+  JoinUsRoute: JoinUsRoute,
+  LatestEventRoute: LatestEventRoute,
+  LoginRoute: LoginRoute,
+  MemberRoute: MemberRouteWithChildren,
+  MilestonesRoute: MilestonesRoute,
+  NewsEventsRoute: NewsEventsRoute,
+  PhotoGalleryRoute: PhotoGalleryRoute,
+  ProductVideosRoute: ProductVideosRoute,
+  ScientistsRoute: ScientistsRoute,
+  SeniorManagementRoute: SeniorManagementRoute,
+  TripleStemcellH2oRoute: TripleStemcellH2oRoute,
+  VideoGalleryRoute: VideoGalleryRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  ServicesSlugRoute: ServicesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
