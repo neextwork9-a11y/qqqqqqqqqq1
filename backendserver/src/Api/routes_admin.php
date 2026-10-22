@@ -354,3 +354,8 @@ $router->post('/api/admin/password', function () {
     DB::run('UPDATE admin_users SET password = ? WHERE id = ?', [password_hash($new, PASSWORD_DEFAULT), (int) $admin['id']]);
     Http::ok();
 });
+
+$router->get('/api/admin/me', function () {
+    $admin = Auth::admin();
+    Http::ok(['id' => (int) $admin['id'], 'name' => $admin['name'], 'email' => $admin['email']]);
+});
