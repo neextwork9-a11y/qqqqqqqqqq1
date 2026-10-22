@@ -67,7 +67,7 @@ function Profile() {
     <Page title="My Profile">
       <form onSubmit={save} className="lifeos-profile">
         <Msg ok={msg?.ok} text={msg?.t ?? null} />
-        <Msg text={q.error ? (q.error as Error).message : settings.error ? (settings.error as Error).message : settings.data?.profile_edit_status === "0" ? "Profile editing is currently disabled." : null} />
+        <Msg text={q.error ? (q.error as Error).message : settings.error ? (settings.error as Error).message : settings.data?.["profile_edit_status"] === "0" ? "Profile editing is currently disabled." : null} />
         <div className="lifeos-profile-grid">
           <table border={0} cellSpacing={0} cellPadding={0} style={{ width: "100%" }}>
             <tbody>
@@ -87,7 +87,7 @@ function Profile() {
               <tr><td style={lbl}>New Photo</td><td style={{ fontSize: 16 }}>:</td>
                 <td><input type="file" accept="image/*" onChange={onFile} style={{ border: 0, fontSize: 16, background: "transparent", padding: 0 }} /></td></tr>
               <tr className="lifeos-profile-spacer"><td style={{ height: 160 }} /><td /><td /></tr>
-              <tr><td /><td /><td><input type="submit" value={busy ? "Saving…" : "Save"} disabled={busy || !q.data || !settings.data || settings.data.profile_edit_status === "0"} style={{ fontSize: 16, border: "1px solid #AAA", background: "#fff", padding: "2px 8px" }} /></td></tr>
+              <tr><td /><td /><td><input type="submit" value={busy ? "Saving…" : "Save"} disabled={busy || !q.data || !settings.data || settings.data["profile_edit_status"] === "0"} style={{ fontSize: 16, border: "1px solid #AAA", background: "#fff", padding: "2px 8px" }} /></td></tr>
             </tbody>
           </table>
         </div>

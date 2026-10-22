@@ -11,9 +11,9 @@ export const Route = createFileRoute("/member/withdrawals")({
 function Withdraw() {
   const w = useMember<{ withdrawable: number; pending_withdrawal: number }>("wallet", "/wallet");
   const settings = useMember<Record<string, string>>("settings", "/settings");
-  const min = Number(settings.data?.withdraw_min ?? 500);
-  const max = Number(settings.data?.withdraw_max ?? 25000);
-  const chargePct = Number(settings.data?.withdraw_charge_pct ?? 0);
+  const min = Number(settings.data?.["withdraw_min"] ?? 500);
+  const max = Number(settings.data?.["withdraw_max"] ?? 25000);
+  const chargePct = Number(settings.data?.["withdraw_charge_pct"] ?? 0);
   const [busy, setBusy] = useState(false);
   const [f, setF] = useState({ method: "bKash", account_number: "", amount: "", member_note: "" });
   const [msg, setMsg] = useState<{ ok: boolean; t: string } | null>(null);
@@ -36,7 +36,7 @@ function Withdraw() {
     <Page title="Withdrawal From">
       <form onSubmit={submit}>
         <Msg ok={msg?.ok} text={msg?.t ?? null} />
-        <Msg text={w.error ? (w.error as Error).message : settings.error ? (settings.error as Error).message : settings.data?.withdrawal_status === "0" ? "Withdrawal requests are currently disabled." : null} />
+        <Msg text={w.error ? (w.error as Error).message : settings.error ? (settings.error as Error).message : settings.data?.["withdrawal_status"] === "0" ? "Withdrawal requests are currently disabled." : null} />
         <table border={0} cellSpacing={0} cellPadding={0} className="lifeos-form-table" style={{ width: "100%" }}>
           <tbody>
             <tr>{L("Your Withdraw Amount")}{C}<td style={{ fontSize: 16, overflowWrap: "anywhere" }}>{bdt(w.data?.withdrawable)} <span style={{ color: "#C00" }}>(Pending {bdt(w.data?.pending_withdrawal)})</span></td></tr>
@@ -47,7 +47,7 @@ function Withdraw() {
               </select></td></tr>
             <tr>{L("Account Number *")}{C}<td><input style={inp} type="text" required value={f.account_number} onChange={(e) => setF({ ...f, account_number: e.target.value })} /></td></tr>
             <tr><td style={{ fontSize: 16, height: 110 }}>Withdraw Note</td>{C}<td><textarea style={{ ...inp, height: 97, width: 200, padding: 10 }} maxLength={1000} value={f.member_note} onChange={(e) => setF({ ...f, member_note: e.target.value })} /></td></tr>
-            <tr><td /><td /><td><input type="submit" value={busy ? "Submitting…" : "Withdraw Request Now"} disabled={busy || !settings.data || !w.data || settings.data.withdrawal_status === "0"} style={{ fontSize: 16, border: "1px solid #AAA", background: "#fff", padding: "2px 8px" }} /></td></tr>
+            <tr><td /><td /><td><input type="submit" value={busy ? "Submitting…" : "Withdraw Request Now"} disabled={busy || !settings.data || !w.data || settings.data["withdrawal_status"] === "0"} style={{ fontSize: 16, border: "1px solid #AAA", background: "#fff", padding: "2px 8px" }} /></td></tr>
           </tbody>
         </table>
       </form>
