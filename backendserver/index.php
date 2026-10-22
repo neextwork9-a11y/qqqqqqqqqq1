@@ -20,5 +20,7 @@ try {
     Http::json(['ok' => false, 'error' => $e->getMessage()], $e->status);
 } catch (\Throwable $e) {
     error_log('[lifeos] ' . $e);
+    @mkdir(__DIR__ . '/storage/logs', 0775, true);
+    @file_put_contents(__DIR__ . '/storage/logs/error.log', date('c') . ' ' . $e . "\n\n", FILE_APPEND);
     Http::json(['ok' => false, 'error' => 'Server error'], 500);
 }
