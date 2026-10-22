@@ -46,7 +46,7 @@ function Profile() {
     e.preventDefault();
     setBusy(true);
     try {
-      const { photo_base64: storedPhoto, ...fields } = f;
+      const fields = { ...f }; delete fields["photo_base64"]; 
       await memberApi("/profile", { body: photo ? { ...fields, photo_base64: photo } : fields });
       setMsg({ ok: true, t: "Profile updated successfully." });
       await q.refetch();
