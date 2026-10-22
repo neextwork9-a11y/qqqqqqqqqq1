@@ -20,6 +20,7 @@ export function NoticeManager({ kind, title }: { kind: "NOTICE" | "SCROLL"; titl
 
   const save = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (form.show_from && form.show_to && form.show_from > form.show_to) return setMsg({ text: "Show From must not be after Show To." });
     setBusy(true); setMsg({ text: null });
     try {
       await adminApi("/notices", { body: { kind, ...form, id: form.id || undefined } });

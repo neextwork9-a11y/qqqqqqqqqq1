@@ -11,7 +11,7 @@ export const Route = createFileRoute("/member/profile")({
 const TOP: [string, string][] = [
   ["name", "Full Name"], ["father_name", "Father's Name"], ["mother_name", "Mother's Name"],
   ["nominee_name", "Nominee's Name"], ["nominee_relation", "Relation With Nominee"], ["dob", "Date of Birth"],
-  ["nid", "Acc. NID No"], ["blood_group", "Blood Group"],
+  ["nid_number", "Acc. NID No"], ["blood_group", "Blood Group"],
 ];
 const BOTTOM: [string, string][] = [
   ["post_code", "Post Code"], ["ward_no", "Ward No"], ["union_name", "Union / Municipality"],
@@ -23,6 +23,8 @@ const lbl: React.CSSProperties = { fontSize: 16, height: 42, width: "45%" };
 function Profile() {
   const q = useMember<Record<string, string | null>>("profile", "/profile");
   const me = useMember<{ email: string | null; phone: string }>("me", "/me").data;
+  const settings = useMember<Record<string, string>>("settings", "/settings");
+  const [busy, setBusy] = useState(false);
   const [f, setF] = useState<Record<string, string>>({});
   const [photo, setPhoto] = useState<string | null>(null);
   const [msg, setMsg] = useState<{ ok: boolean; t: string } | null>(null);
@@ -33,6 +35,7 @@ function Profile() {
   const onFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) return setMsg({ ok: false, t: "Choose a JPG, PNG or WebP photo." });
     if (file.size > 1024 * 1024) return setMsg({ ok: false, t: "Photo must be under 1 MB." });
     const r = new FileReader();
     r.onload = () => setPhoto(String(r.result));
@@ -41,13 +44,15 @@ function Profile() {
 
   const save = async (e: React.FormEvent) => {
     e.preventDefault();
+    setBusy(true);
     try {
-      await memberApi("/profile", { body: photo ? { ...f, photo } : f });
+      await memberApi("/profile", { body: photo ? { ...f, photo_base64: photo } : f });
       setMsg({ ok: true, t: "Profile updated successfully." });
-      q.refetch();
+      await q.refetch();
+      setPhoto(null);
     } catch (err) {
       setMsg({ ok: false, t: (err as Error).message });
-    }
+    } finally { setBusy(false); }
   };
 
   const field = ([k, l]: [string, string]) => (
@@ -56,12 +61,13 @@ function Profile() {
       <td><input style={inp} type="text" placeholder={k === "dob" ? "YYYY-MM-DD" : undefined} value={f[k] ?? ""} onChange={(e) => setF({ ...f, [k]: e.target.value })} /></td>
     </tr>
   );
-  const img = photo || f["photo"] || "/member-kit/images/avatar.png";
+  const img = photo || f["photo_base64"] || "/member-kit/images/avatar.png";
 
   return (
     <Page title="My Profile">
       <form onSubmit={save} className="lifeos-profile">
         <Msg ok={msg?.ok} text={msg?.t ?? null} />
+        <Msg text={q.error ? (q.error as Error).message : settings.error ? (settings.error as Error).message : settings.data?.profile_edit_status === "0" ? "Profile editing is currently disabled." : null} />
         <div className="lifeos-profile-grid">
           <table border={0} cellSpacing={0} cellPadding={0} style={{ width: "100%" }}>
             <tbody>
@@ -81,7 +87,7 @@ function Profile() {
               <tr><td style={lbl}>New Photo</td><td style={{ fontSize: 16 }}>:</td>
                 <td><input type="file" accept="image/*" onChange={onFile} style={{ border: 0, fontSize: 16, background: "transparent", padding: 0 }} /></td></tr>
               <tr className="lifeos-profile-spacer"><td style={{ height: 160 }} /><td /><td /></tr>
-              <tr><td /><td /><td><input type="submit" value="Save" style={{ fontSize: 16, border: "1px solid #AAA", background: "#fff", padding: "2px 8px" }} /></td></tr>
+              <tr><td /><td /><td><input type="submit" value={busy ? "Saving…" : "Save"} disabled={busy || !q.data || !settings.data || settings.data.profile_edit_status === "0"} style={{ fontSize: 16, border: "1px solid #AAA", background: "#fff", padding: "2px 8px" }} /></td></tr>
             </tbody>
           </table>
         </div>

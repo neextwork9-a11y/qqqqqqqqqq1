@@ -57,6 +57,8 @@ export async function demoApi(path: string, method: string, body: any): Promise<
   if (method === "GET") {
     switch (p) {
       case "/me": return { ...db.me, name: db.profile["name"] || db.me["name"] };
+      case "/settings": return { withdraw_min: "500", withdraw_max: "25000", withdraw_charge_pct: "5", withdrawal_status: "1", profile_edit_status: "1" };
+      case "/notices": return [];
       case "/profile": return db.profile;
       case "/wallet": return { withdrawable: paid - pending - withdrawn - (by_type["CASHBACK"] ?? 0), pending_withdrawal: pending, withdrawn, cashback_service_only: by_type["CASHBACK"] ?? 0, by_type };
       case "/rank": return { lifetime_matchings: 12, current: { name: "Executive" }, next: { name: "Project Director", required_matchings: 25 } };
