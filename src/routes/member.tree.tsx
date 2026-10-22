@@ -41,7 +41,7 @@ function Tree() {
   const top = root ?? q.data ?? null;
   const l1 = [top?.left ?? null, top?.right ?? null];
   const l2 = l1.flatMap((n) => [n?.left ?? null, n?.right ?? null]);
-  const line = (wide: boolean) => <div aria-hidden="true" className={`${wide ? "w-1/2" : "w-1/2"} mx-auto h-6 border-x border-t border-primary`} />;
+  const line = () => <div aria-hidden="true" className="mx-auto h-6 w-1/2 border-x border-t border-primary" />;
 
   return (
     <Page title="Genealogy Tree">
@@ -62,9 +62,9 @@ function Tree() {
         <table width="100%" cellSpacing={0} cellPadding={2} id="demo" style={{ minWidth: 460 }}>
           <tbody>
             <tr><td colSpan={4} style={{ textAlign: "center" }}><table width="100%"><tbody><tr><Cell n={top} size={80} onPick={setRoot} /></tr></tbody></table></td></tr>
-            <tr><td colSpan={4} style={{ padding: 0, textAlign: "center" }}>{line(true)}</td></tr>
+            <tr><td colSpan={4} style={{ padding: 0, textAlign: "center" }}>{line()}</td></tr>
             <tr>{l1.map((n, i) => <td key={i} colSpan={2} style={{ textAlign: "center" }}><table width="100%"><tbody><tr><Cell n={n} size={70} onPick={setRoot} /></tr></tbody></table></td>)}</tr>
-            <tr>{l1.map((_, i) => <td key={i} colSpan={2} style={{ padding: 0, textAlign: "center" }}>{line(false)}</td>)}</tr>
+            <tr>{l1.map((_, i) => <td key={i} colSpan={2} style={{ padding: 0, textAlign: "center" }}>{line()}</td>)}</tr>
             <tr>{l2.map((n, i) => <Cell key={i} n={n} size={60} onPick={setRoot} />)}</tr>
           </tbody>
         </table>

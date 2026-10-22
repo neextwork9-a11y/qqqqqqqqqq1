@@ -198,7 +198,7 @@ $bt = api('GET', '/api/member/tree/binary', null, $B['token'])['json']['data'];
 check('B binary has C left and D right', ($bt['left']['life_id'] ?? '') === $C['life_id'] && ($bt['right']['life_id'] ?? '') === $D['life_id'], json_encode([$bt['left']['life_id'] ?? null, $bt['right']['life_id'] ?? null]));
 
 // ---- Daily matching cap: force C's used cap to 4999, then a match pays 1 taka ----
-$pdo = new PDO('mysql:host=127.0.0.1;dbname=lifeos', 'lifeos_user', 'testpass', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+$pdo = DB::pdo();
 $today = date('Y-m-d');
 $pdo->prepare('INSERT INTO lo_daily_caps (user_id, cap_date, paid) VALUES (?, ?, 4999) ON DUPLICATE KEY UPDATE paid = 4999')->execute([$C['id'], $today]);
 
@@ -238,6 +238,28 @@ $r = api('POST', "/api/admin/withdrawals/$wdId/process", ['status' => 'APPROVED'
 check('admin approves withdrawal', $r['status'] === 200, $r['raw']);
 $wb2 = api('GET', '/api/member/wallet', null, $B['token'])['json']['data'];
 check('wallet reflects 500 withdrawn', abs(($wb2['withdrawn'] ?? 0) - 500.0) < 0.01, 'got ' . ($wb2['withdrawn'] ?? 'none'));
+
+// Admin switches must govern the real member APIs; isolated database only.
+api('POST', '/api/admin/settings', ['login_status' => '0'], $adminToken);
+check('Login switch blocks new member sessions', api('POST', '/api/member/login', ['username' => '01700000001', 'password' => '1234'])['status'] === 403);
+api('POST', '/api/admin/settings', ['login_status' => '1', 'signup_status' => '0'], $adminToken);
+check('Signup switch blocks registration', api('POST', '/api/member/register', ['name' => 'Blocked', 'phone' => '01799999999', 'pin' => '1234', 'referral_code' => $meA['referral_code']])['status'] === 403);
+api('POST', '/api/admin/settings', ['signup_status' => '1', 'profile_edit_status' => '0'], $adminToken);
+check('Profile switch blocks writes', api('POST', '/api/member/profile', ['name' => 'Blocked'], $tokenA)['status'] === 403);
+api('POST', '/api/admin/settings', ['profile_edit_status' => '1', 'withdrawal_status' => '0'], $adminToken);
+check('Withdrawal switch blocks requests', api('POST', '/api/member/withdrawals', ['amount' => 500, 'method' => 'bkash', 'account_number' => 'TEST'], $B['token'])['status'] === 403);
+api('POST', '/api/admin/settings', ['withdrawal_status' => '1'], $adminToken);
+check('Member-safe settings expose configured max 25000', (api('GET', '/api/member/settings', null, $tokenA)['json']['data']['withdraw_max'] ?? null) === '25000');
+$beforeSettings = api('GET', '/api/admin/settings', null, $adminToken)['json']['data'];
+$badSettings = api('POST', '/api/admin/settings', ['site_name' => 'Must not persist', 'withdraw_charge_pct' => 101], $adminToken);
+check('Invalid settings cannot partially save', $badSettings['status'] === 422 && api('GET', '/api/admin/settings', null, $adminToken)['json']['data'] === $beforeSettings);
+check('Processed withdrawal cannot change status', api('POST', "/api/admin/withdrawals/$wdId/process", ['status' => 'REJECTED'], $adminToken)['status'] === 409);
+check('Unknown member status returns 404', api('POST', '/api/admin/members/999999999/status', ['status' => 'active'], $adminToken)['status'] === 404);
+check('Reversed notice dates rejected', api('POST', '/api/admin/notices', ['content' => 'Invalid', 'show_from' => '2026-10-23', 'show_to' => '2026-10-22'], $adminToken)['status'] === 422);
+$profile = ['name' => 'Root A', 'nid_number' => 'TEST-NID', 'district' => 'Dhaka', 'post_code' => '1207', 'ward_no' => '12', 'union_name' => 'Test Union', 'upazila' => 'Test Subdistrict'];
+api('POST', '/api/member/profile', $profile, $tokenA);
+$saved = api('GET', '/api/member/profile', null, $tokenA)['json']['data'];
+check('All displayed extended profile fields persist', count(array_diff_assoc($profile, $saved)) === 0);
 
 // ---- Access boundaries ----
 $r = api('GET', '/api/admin/overview', null, $tokenA);
