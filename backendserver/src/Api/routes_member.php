@@ -13,6 +13,7 @@ use LifeOS\Engine\Rank;
 
 // ---- Auth ----
 $router->post('/api/member/register', function () {
+    if (!\LifeOS\PanelPolicy::enabled(DB::val("SELECT v FROM lo_settings WHERE k = 'signup_status'"))) throw new HttpError('Registration is currently disabled', 403);
     $b = Http::body();
     if (empty($b['pin']) && !empty($b['password'])) $b['pin'] = $b['password'];
     foreach (['phone', 'pin', 'name'] as $f) {
@@ -97,6 +98,7 @@ $router->get('/api/member/sponsor', function () {
 });
 
 $router->post('/api/member/login', function () {
+    if (!\LifeOS\PanelPolicy::enabled(DB::val("SELECT v FROM lo_settings WHERE k = 'login_status'"))) throw new HttpError('Member login is currently disabled', 403);
     $b = Http::body();
     $u = DB::one('SELECT * FROM users WHERE phone = ? OR life_id = ? OR referral_code = ? OR username = ?', [$b['username'] ?? '', $b['username'] ?? '', $b['username'] ?? '', $b['username'] ?? '']);
     if (!$u || !password_verify((string) ($b['password'] ?? ''), (string) $u['pin_hash'])) {
@@ -109,20 +111,31 @@ $router->post('/api/member/login', function () {
 // ---- Dashboard ----
 $router->get('/api/member/profile', function () {
     $u = Auth::member();
-    Http::ok(DB::one('SELECT name, father_name, mother_name, nominee_name, nominee_relation, dob, blood_group, phone_alt, address_current FROM user_profiles WHERE user_id = ? ORDER BY id LIMIT 1', [(int) $u['id']]) ?? []);
+    Http::ok(DB::one('SELECT name, father_name, mother_name, nominee_name, nominee_relation, dob, blood_group, phone_alt, address_current, nid_number, photo_base64, district, post_code, ward_no, union_name, upazila FROM user_profiles WHERE user_id = ? ORDER BY id LIMIT 1', [(int) $u['id']]) ?? []);
 });
 
 $router->post('/api/member/profile', function () {
     $u = Auth::member();
     $b = Http::body();
-    $fields = ['name', 'father_name', 'mother_name', 'nominee_name', 'nominee_relation', 'dob', 'blood_group', 'phone_alt', 'address_current'];
+    if (!\LifeOS\PanelPolicy::enabled(DB::val("SELECT v FROM lo_settings WHERE k = 'profile_edit_status'"))) throw new HttpError('Profile editing is currently disabled', 403);
+    $fields = ['name', 'father_name', 'mother_name', 'nominee_name', 'nominee_relation', 'dob', 'blood_group', 'phone_alt', 'address_current', 'nid_number', 'district', 'post_code', 'ward_no', 'union_name', 'upazila'];
+    $limits = ['name' => 100, 'nominee_name' => 80, 'nominee_relation' => 40, 'blood_group' => 5, 'phone_alt' => 20, 'address_current' => 2000, 'nid_number' => 30, 'district' => 60, 'post_code' => 12, 'ward_no' => 30];
     $values = [];
     foreach ($fields as $field) {
         $value = trim((string) ($b[$field] ?? ''));
-        if (strlen($value) > ($field === 'address_current' ? 2000 : 100)) throw new HttpError("$field is too long");
+        if (mb_strlen($value) > ($limits[$field] ?? 100)) throw new HttpError("$field is too long");
         $values[] = $value === '' ? null : $value;
     }
     if (!$values[0]) throw new HttpError('Full name required');
+    if ($values[6] !== null && !in_array($values[6], ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'], true)) throw new HttpError('Invalid blood group');
+    if (array_key_exists('photo_base64', $b)) {
+        $photo = $b['photo_base64'];
+        if (!is_string($photo) || strlen($photo) > 2800000 || !preg_match('#^data:image/(jpeg|png|webp);base64,([A-Za-z0-9+/=]+)$#', $photo, $m)) throw new HttpError('Photo must be JPG, PNG or WebP, at most 2 MB');
+        $binary = base64_decode($m[2], true);
+        $info = $binary === false ? false : @getimagesizefromstring($binary);
+        if (!$info || strlen($binary) > 2097152 || !in_array($info['mime'], ['image/jpeg', 'image/png', 'image/webp'], true)) throw new HttpError('Invalid photo');
+        $fields[] = 'photo_base64'; $values[] = $photo;
+    }
     if ($values[5] !== null && (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $values[5]) || date('Y-m-d', strtotime($values[5]) ?: 0) !== $values[5])) throw new HttpError('Valid birth date required');
     DB::tx(function () use ($u, $fields, $values) {
         DB::one('SELECT id FROM users WHERE id = ? FOR UPDATE', [(int) $u['id']]);
@@ -253,23 +266,31 @@ $router->get('/api/member/rank', function () {
 });
 
 // ---- Withdrawals ----
+$router->get('/api/member/settings', function () {
+    Auth::member();
+    $out = ['withdraw_min' => '500', 'withdraw_max' => '25000', 'withdraw_charge_pct' => '0', 'withdrawal_status' => '1', 'profile_edit_status' => '1'];
+    foreach (DB::all('SELECT k, v FROM lo_settings') as $row) if (array_key_exists($row['k'], $out)) $out[$row['k']] = $row['v'];
+    Http::ok($out);
+});
+
 $router->post('/api/member/withdrawals', function () {
     $u = Auth::member();
     $b = Http::body();
     $amount = round((float) ($b['amount'] ?? 0), 3);
-    $min = (float) (DB::val("SELECT v FROM lo_settings WHERE k = 'withdraw_min'") ?: 500);
-    if (!is_finite($amount) || $amount < $min) throw new HttpError("Minimum withdrawal is $min");
     if (empty($b['method']) || empty($b['account_number'])) throw new HttpError('method and account_number required');
-    $chargePct = (float) (DB::val("SELECT v FROM lo_settings WHERE k = 'withdraw_charge_pct'") ?: 0);
+    if (!in_array(strtolower((string) $b['method']), ['bkash', 'nagad', 'rocket', 'bank'], true)) throw new HttpError('Invalid payment method');
+    if (strlen((string) $b['account_number']) > 100 || strlen((string) ($b['member_note'] ?? '')) > 1000) throw new HttpError('Withdrawal details too long');
     $uid = (int) $u['id'];
-    $id = DB::tx(function () use ($uid, $b, $amount, $chargePct) {
+    $id = DB::tx(function () use ($uid, $b, $amount) {
         // Lock the member so two simultaneous requests cannot both spend the same balance.
         DB::one('SELECT id FROM users WHERE id = ? FOR UPDATE', [$uid]);
         $available = \LifeOS\Engine\Wallet::available($uid);
-        if ($amount > $available) throw new HttpError('Insufficient withdrawable balance', 422);
+        $settings = [];
+        foreach (DB::all('SELECT k, v FROM lo_settings') as $row) $settings[$row['k']] = $row['v'];
+        $charge = \LifeOS\PanelPolicy::withdrawal($settings, $amount, $available);
         return DB::insert(
-            'INSERT INTO lo_withdrawals (user_id, method, account_number, amount, charge) VALUES (?,?,?,?,?)',
-            [$uid, $b['method'], $b['account_number'], $amount, round($amount * $chargePct / 100, 3)]
+            'INSERT INTO lo_withdrawals (user_id, method, account_number, amount, charge, member_note) VALUES (?,?,?,?,?,?)',
+            [$uid, $b['method'], $b['account_number'], $amount, $charge, trim((string) ($b['member_note'] ?? '')) ?: null]
         );
     });
     Http::ok(['withdrawal_id' => $id, 'status' => 'PENDING']);
@@ -277,7 +298,7 @@ $router->post('/api/member/withdrawals', function () {
 
 $router->get('/api/member/withdrawals', function () {
     $u = Auth::member();
-    Http::ok(DB::all('SELECT id, method, account_number, amount, charge, status, admin_note, created_at FROM lo_withdrawals WHERE user_id = ? ORDER BY id DESC', [(int) $u['id']]));
+    Http::ok(DB::all('SELECT id, method, account_number, amount, charge, status, admin_note, member_note, created_at FROM lo_withdrawals WHERE user_id = ? ORDER BY id DESC', [(int) $u['id']]));
 });
 
 function memberSummary(array $u): array
