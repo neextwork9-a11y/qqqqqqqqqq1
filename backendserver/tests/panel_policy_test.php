@@ -9,7 +9,7 @@ function check(bool $condition, string $label): void {
     echo "PASS: $label\n";
 }
 function rejected(callable $fn, int $status): bool {
-    try { $fn(); return false; } catch (HttpError $e) { return $e->getCode() === $status; }
+    try { $fn(); return false; } catch (HttpError $e) { return $e->status === $status; }
 }
 $s = ['withdraw_min' => '500', 'withdraw_max' => '25000', 'withdraw_charge_pct' => '5'];
 check(PanelPolicy::enabled(null) && !PanelPolicy::enabled('0'), 'Missing switch defaults enabled; explicit zero disables');
