@@ -1,5 +1,5 @@
 // Browser-only client for the standalone PHP member API.
-const BASE = ((import.meta.env["VITE_LIFEOS_API_URL"] as string | undefined) ?? "https://acserver.nexarofx.com/lifeos/backendserver/api").replace(/\/$/, "");
+const BASE = ((import.meta.env["VITE_LIFEOS_API_URL"] as string | undefined) ?? "https://server.nexarofx.com/lifeos/backendserver/api").replace(/\/$/, "");
 const KEY = "lifeos_member_token";
 
 export const memberToken = {
