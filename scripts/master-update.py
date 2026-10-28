@@ -10,7 +10,7 @@ import time
 import urllib.request
 import urllib.error
 
-BASE = os.environ.get("LIFEOS_SERVER_URL", "https://acserver.nexarofx.com/lifeos/backendserver").rstrip("/")
+BASE = os.environ.get("LIFEOS_SERVER_URL", "https://server.nexarofx.com/lifeos/backendserver").rstrip("/")
 ROOT = Path(__file__).resolve().parents[1] / "backendserver"
 FILES = ["src/Migrations.php", "src/bootstrap.php", "src/Auth.php", "src/PanelPolicy.php", "src/Api/routes_master.php", "src/Api/routes_member.php", "src/Engine/Wallet.php", "src/Engine/Commission.php", "src/Engine/Placement.php", "src/Engine/Plan.php", "src/Engine/Rank.php", "src/Api/routes_admin.php", "config.example.php", "README.md", ".htaccess"]
 # Ship every migration, including financial audit structures; never enumerate a partial schema.
